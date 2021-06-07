@@ -3,14 +3,14 @@ import { JSONResolver, DateTimeResolver } from 'graphql-scalars'
 const users = [
   {
     id: '123',
-    title: 'The Awakening',
-    author: 'Kate Chopin',
+    username: 'The Awakening',
+    fullName: 'Kate Chopin',
     dateOfBirth: '2020-05-05T04:30:20Z'
   },
   {
     id: '456',
-    title: 'City of Glass',
-    author: 'Paul Auster'
+    username: 'City of Glass',
+    fullName: 'Paul Auster'
   }
 ]
 
