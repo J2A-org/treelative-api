@@ -1,0 +1,40 @@
+type Mutation {
+  addUser (input: [AddUserInput!]!): [User!]
+	updateUser (input: UpdateUserInput!): [User!]
+	deleteUser (filter: UserFilter!): [String!]
+}
+
+input AddUserInput {
+  role: Role!
+  username: String!
+  email: String
+  fullName: String!
+  shortName: String
+  birthLocation: JSON
+  currentLocation: JSON
+  deathLocation: JSON
+  dateOfBirth: DateTime
+  dateOfDeath: DateTime
+  marriage: MarriageInput
+  parentID: String
+  childIDs: [String!]
+}
+
+input MarriageInput {
+  partnerID: String!
+  date: DateTime
+  location: JSON
+}
+
+input UpdateUserInput {
+  role: Role
+  username: String
+  email: String
+  fullName: String
+  shortName: String
+  birthLocation: JSON
+  currentLocation: JSON
+  deathLocation: JSON
+  dateOfBirth: DateTime
+  dateOfDeath: DateTime
+}

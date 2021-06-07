@@ -1,0 +1,32 @@
+scalar JSON
+scalar DateTime
+
+enum Role {
+  USER
+  ADMIN
+}
+
+type User {
+  id: String
+  role: Role
+  username: String!
+  email: String
+  fullName: String!
+  shortName: String
+  birthLocation: JSON
+  currentLocation: JSON
+  deathLocation: JSON
+  dateOfBirth: DateTime
+  dateOfDeath: DateTime
+  createdAt: DateTime
+  updatedAt: DateTime
+  marriage: Marriage
+  parent: User
+  children: [User!]
+}
+
+type Marriage {
+  partner: User!
+  date: DateTime
+  location: JSON
+}

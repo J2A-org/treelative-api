@@ -1,0 +1,46 @@
+input RoleFilter {
+  equals: Role
+  not: Role
+  in: [Role!]
+  notIn: [Role!]
+}
+
+input UserUniqueFilter {
+  id: Int
+  username: String
+  email: String
+}
+
+input UserFilter {
+  id: StringFilter
+  role: RoleFilter
+  username: StringFilter
+  email: StringFilter
+  fullName: StringFilter
+  shortName: StringFilter
+  birthLocation: JsonFilter
+  currentLocation: JsonFilter
+  deathLocation: JsonFilter
+  dateOfBirth: DateTimeFilter
+  dateOfDeath: DateTimeFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  parent: UserFilter
+  children: [UserFilter!]
+  marriage: UserMarriagesFilter
+  AND: [UserFilter!]
+  NOT: [UserFilter!]
+  OR: [UserFilter!]
+}
+
+input UserMarriagesFilter {
+  every: MarriageFilter
+  none: MarriageFilter
+  some: MarriageFilter
+}
+
+input MarriageFilter {
+  partner: UserFilter!
+  date: DateTimeFilter
+  location: JsonFilter
+}

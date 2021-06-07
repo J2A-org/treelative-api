@@ -1,0 +1,13 @@
+type Query {
+  getUser (
+    filter: UserUniqueFilter
+  ): User!
+
+  queryUser (
+    skip: Int
+    take: Int
+    cursor: UserUniqueFilter
+    orderBy: [UserOrder!]
+    where: UserFilter
+  ): [User!]
+}

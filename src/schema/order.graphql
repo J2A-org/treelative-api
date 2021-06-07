@@ -1,0 +1,11 @@
+input UserOrder {
+  role: SortOrder
+  username: SortOrder
+  email: SortOrder
+  fullName: SortOrder
+  shortName: SortOrder
+  dateOfBirth: SortOrder
+  dateOfDeath: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+}
