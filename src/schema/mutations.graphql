@@ -1,15 +1,16 @@
 type Mutation {
-  addUser (input: [AddUserInput!]!): [User!]
-	updateUser (input: UpdateUserInput!): [User!]
-	deleteUser (filter: UserFilter!): [String!]
+  addUser (input: AddUserInput!): User!
+	updateUser (filter: UserUniqueFilter! input: UpdateUserInput!): User!
+	deleteUser (filter: UserUniqueFilter!): User!
 }
 
 input AddUserInput {
   role: Role!
   username: String!
+  password: String!
   email: String
   fullName: String!
-  shortName: String
+  shortName: String!
   birthLocation: JSON
   currentLocation: JSON
   deathLocation: JSON

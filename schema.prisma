@@ -15,29 +15,29 @@ model User {
   email           String?   @unique
   fullName        String
   shortName       String
-  birthLocation   Json
-  currentLocation Json
-  deathLocation   Json
-  dateOfBirth     DateTime
-  dateOfDeath     DateTime
+  birthLocation   Json?
+  currentLocation Json?
+  deathLocation   Json?
+  dateOfBirth     DateTime?
+  dateOfDeath     DateTime?
   parent_id       String?   @unique
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
-  marriage        Marriage? @relation("Partner", fields: [id, id], references: [partner1_id, partner2_id])
+  marriage        Marriage? @relation("Marriage")
   parent          User?     @relation("ParentChild", fields: [parent_id], references: [id])
   children        User[]    @relation("ParentChild")
 }
 
 model Marriage {
-  partner1_id String
-  partner2_id String
-  date        DateTime
-  location    Json
-  partner     User?    @relation("Partner")
+  id          String   @id @default(uuid())
+  userID      String
+  partnerID   String
+  date        DateTime?
+  location    Json?
+  partner     User?    @relation("Marriage", fields: [userID], references: [id])
 
-  @@unique([partner1_id, partner2_id])
+  @@unique([userID, partnerID])
 }
-
 
 enum Role {
   USER

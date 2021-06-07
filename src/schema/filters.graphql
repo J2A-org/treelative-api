@@ -6,7 +6,7 @@ input RoleFilter {
 }
 
 input UserUniqueFilter {
-  id: Int
+  id: String
   username: String
   email: String
 }
