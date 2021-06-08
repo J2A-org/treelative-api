@@ -15,11 +15,12 @@ const prisma = new PrismaClient({
 })
 
 // Log all prisma queries during development
-isDev && prisma.$on('query', console.log)
+// isDev && prisma.$on('query', console.log)
 
 export default new ApolloServer({
   typeDefs,
   resolvers,
+  tracing: isDev,
   context: async ({ req }) => {
     // authenticate the user (if auth header is present) and add to context
     const user = await authenticateUserToken(req, prisma)

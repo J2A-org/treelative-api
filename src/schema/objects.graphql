@@ -15,22 +15,20 @@ type User {
   shortName: String
   birthLocation: JSON
   currentLocation: JSON
-  marriageLocation: JSON
   deathLocation: JSON
   dateOfBirth: DateTime
-  dateOfMarriage: DateTime
   dateOfDeath: DateTime
   createdAt: DateTime
   updatedAt: DateTime
-  parent: User
+  parents: [User!]
   children: [User!]
-  partner: User
+  partners: [User!]
 }
 
 type Couple {
   id: String!
-  partner1: User!
-  partner2: User!
+  user1: User!
+  user2: User!
   dateOfMarriage: DateTime
   marriageLocation: JSON
 }

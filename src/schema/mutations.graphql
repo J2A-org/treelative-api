@@ -17,10 +17,8 @@ input AddUserInput {
   shortName: String!
   birthLocation: JSON
   currentLocation: JSON
-  marriageLocation: JSON
   deathLocation: JSON
   dateOfBirth: DateTime
-  dateOfMarriage: DateTime
   dateOfDeath: DateTime
 }
 
@@ -32,9 +30,7 @@ input UpdateUserInput {
   shortName: String
   birthLocation: JSON
   currentLocation: JSON
-  marriageLocation: JSON
   deathLocation: JSON
   dateOfBirth: DateTime
-  dateOfMarriage: DateTime
   dateOfDeath: DateTime
 }

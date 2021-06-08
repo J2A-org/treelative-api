@@ -11,10 +11,12 @@ import addUserParent from './mutations/addUserParent'
 import addUserChild from './mutations/addUserChild'
 import addUserPartner from './mutations/addUserPartner'
 
-import getUserParent from './queries/getUserParent'
+import getUserParents from './queries/getUserParents'
 import getUserChildren from './queries/getUserChildren'
-import getUserPartner from './queries/getUserPartner'
+import getUserPartners from './queries/getUserPartners'
 
+import getCoupleUser1 from './queries/getCoupleUser1'
+import getCoupleUser2 from './queries/getCoupleUser2'
 import queryCouple from './queries/queryCouple'
 
 export default {
@@ -22,9 +24,14 @@ export default {
   DateTime: DateTimeResolver,
 
   User: {
-    parent: getUserParent,
+    parents: getUserParents,
     children: getUserChildren,
-    partner: getUserPartner
+    partners: getUserPartners
+  },
+
+  Couple: {
+    user1: getCoupleUser1,
+    user2: getCoupleUser2
   },
 
   Query: {
