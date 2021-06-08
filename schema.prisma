@@ -8,35 +8,28 @@ generator client {
 }
 
 model User {
-  id              String    @id @default(uuid())
-  role            Role      @default(USER)
-  username        String    @unique
-  password        String
-  email           String?   @unique
-  fullName        String
-  shortName       String
-  birthLocation   Json?
-  currentLocation Json?
-  deathLocation   Json?
-  dateOfBirth     DateTime?
-  dateOfDeath     DateTime?
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-  partner_id      String?
-  partner         User?     @relation("MarriagePartners", fields: [partner_id], references: [id])
-  partnerSelf     User?     @relation("MarriagePartners")
-  parent_id       String?
-  parent          User?     @relation("ParentChildren", fields: [parent_id], references: [id])
-  children        User[]    @relation("ParentChildren")
-  marriage_id     String?
-  marriage        Marriage? @relation(fields: [marriage_id], references: [id])
-}
-
-model Marriage {
-  id        String    @id @default(uuid())
-  date      DateTime?
-  location  Json?
-  couples   User[]
+  id               String     @id @default(uuid())
+  role             Role       @default(USER)
+  username         String     @unique
+  password         String
+  email            String?    @unique
+  fullName         String
+  shortName        String
+  birthLocation    Json?
+  currentLocation  Json?
+  deathLocation    Json?
+  marriageLocation Json?
+  dateOfBirth      DateTime?
+  dateOfDeath      DateTime?
+  dateOfMarriage   DateTime?
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  parent_id        String?
+  parent           User?      @relation("ParentChildren", fields: [parent_id], references: [id])
+  children         User[]     @relation("ParentChildren")
+  partner_id       String?
+  partner          User?      @relation("UserToUser", fields: [partner_id], references: [id])
+  partnerSelf      User?      @relation("UserToUser")
 }
 
 enum Role {

@@ -1,8 +1,8 @@
 export default async (parent, args, context, info) => {
-  const marriage = await context.prisma.user.update({
+  const user = await context.prisma.user.update({
     where: args.filter,
     data: {
-      partner: {
+      parent: {
         connect: {
           ...args.input
         }
@@ -10,5 +10,5 @@ export default async (parent, args, context, info) => {
     }
   })
 
-  return marriage
+  return user
 }

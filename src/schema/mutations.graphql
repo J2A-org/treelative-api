@@ -2,10 +2,10 @@ type Mutation {
   addUser (input: AddUserInput!): User!
 	updateUser (filter: UserUniqueFilter! input: UpdateUserInput!): User!
 	deleteUser (filter: UserUniqueFilter!): User!
-  addUserPartner (filter: UserUniqueFilter input: UserUniqueFilter): User!
 
-  addMarriage (couple1: UserUniqueFilter! couple2: UserUniqueFilter! input: MarriageInput!): Marriage!
-
+  addUserParent (filter: UserUniqueFilter! input: UserUniqueFilter!): User!
+  addUserChild (filter: UserUniqueFilter! input: UserUniqueFilter!): User!
+  addUserPartner (filter: UserUniqueFilter! input: UserUniqueFilter!): User!
 }
 
 input AddUserInput {
@@ -17,11 +17,11 @@ input AddUserInput {
   shortName: String!
   birthLocation: JSON
   currentLocation: JSON
+  marriageLocation: JSON
   deathLocation: JSON
   dateOfBirth: DateTime
+  dateOfMarriage: DateTime
   dateOfDeath: DateTime
-  parentID: String
-  childIDs: [String!]
 }
 
 input UpdateUserInput {
@@ -32,12 +32,9 @@ input UpdateUserInput {
   shortName: String
   birthLocation: JSON
   currentLocation: JSON
+  marriageLocation: JSON
   deathLocation: JSON
   dateOfBirth: DateTime
+  dateOfMarriage: DateTime
   dateOfDeath: DateTime
-}
-
-input MarriageInput {
-  date: DateTime!
-  location: JSON
 }
