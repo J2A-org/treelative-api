@@ -1,19 +1,21 @@
 export default async (parent, args, context, info) => {
+  const { userOne, userTwo, ...rest } = args
   // create the couple
   const couple = await context.prisma.couple.create({
     data: {
+      ...rest,
       userOne: {
-        connect: args.user
+        connect: userOne
       },
       userTwo: {
-        connect: args.partner
+        connect: userTwo
       }
     }
   })
 
   // connect the couple to userOne
-  const userOne = await context.prisma.user.update({
-    where: args.user,
+  await context.prisma.user.update({
+    where: userOne,
     data: {
       couple: {
         connect: {
@@ -25,7 +27,7 @@ export default async (parent, args, context, info) => {
 
   // connect the couple to userTwo
   await context.prisma.user.update({
-    where: args.partner,
+    where: userTwo,
     data: {
       couple: {
         connect: {
@@ -35,5 +37,5 @@ export default async (parent, args, context, info) => {
     }
   })
 
-  return userOne
+  return couple
 }

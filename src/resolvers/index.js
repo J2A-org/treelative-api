@@ -7,6 +7,10 @@ import addUser from './mutations/addUser'
 import updateUser from './mutations/updateUser'
 import deleteUser from './mutations/deleteUser'
 
+import addCouple from './mutations/addCouple'
+import updateCouple from './mutations/updateCouple'
+import deleteCouple from './mutations/deleteCouple'
+
 import addUserParent from './mutations/addUserParent'
 import addUserChild from './mutations/addUserChild'
 import addUserPartner from './mutations/addUserPartner'
@@ -15,11 +19,11 @@ import getUserParents from './queries/getUserParents'
 import getUserChildren from './queries/getUserChildren'
 import getUserPartner from './queries/getUserPartner'
 import getUserSiblings from './queries/getUserSiblings'
-import getUserMarriage from './queries/getUserMarriage'
 
+import getCouple from './queries/getCouple'
+import queryCouple from './queries/queryCouple'
 import getCoupleUserOne from './queries/getCoupleUserOne'
 import getCoupleUserTwo from './queries/getCoupleUserTwo'
-import queryCouple from './queries/queryCouple'
 
 export default {
   JSON: JSONResolver,
@@ -28,9 +32,8 @@ export default {
   User: {
     parents: getUserParents,
     children: getUserChildren,
-    partner: getUserPartner,
     siblings: getUserSiblings,
-    marriage: getUserMarriage
+    partner: getUserPartner
   },
 
   Couple: {
@@ -41,6 +44,7 @@ export default {
   Query: {
     getUser,
     queryUser,
+    getCouple,
     queryCouple
   },
 
@@ -50,6 +54,9 @@ export default {
     deleteUser,
     addUserParent,
     addUserChild,
-    addUserPartner
+    addUserPartner,
+    addCouple,
+    updateCouple,
+    deleteCouple
   }
 }

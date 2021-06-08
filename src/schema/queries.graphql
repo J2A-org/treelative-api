@@ -11,6 +11,10 @@ type Query {
     where: UserFilter
   ): [User!]
 
+  getCouple (
+    filter: CoupleUniqueFilter
+  ): Couple!
+
   queryCouple (
     skip: Int
     take: Int

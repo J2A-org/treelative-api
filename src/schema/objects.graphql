@@ -18,12 +18,11 @@ type User {
   deathLocation: JSON
   dateOfBirth: DateTime
   dateOfDeath: DateTime
-  marriage: Marriage
   createdAt: DateTime
   updatedAt: DateTime
   parents: [User!]
   children: [User!]
-  partner: User
+  partner: Partner
   siblings: [User!]
 }
 
@@ -35,7 +34,8 @@ type Couple {
   marriageLocation: JSON
 }
 
-type Marriage {
+type Partner {
+  user: User!
   dateOfMarriage: DateTime
   marriageLocation: JSON
 }

@@ -1,18 +1,23 @@
 export default async (parent, args, context, info) => {
-  let userPartner = await context.prisma.couple.findUnique({
+  let userCouple = await context.prisma.couple.findUnique({
     where: {
       userOneID: parent.id
-    }
-  }).userTwo()
+    },
+    include: { userTwo: true }
+  })
 
-  if (!userPartner) {
+  if (!userCouple) {
     // try with userTwoID
-    userPartner = await context.prisma.couple.findUnique({
+    userCouple = await context.prisma.couple.findUnique({
       where: {
         userTwoID: parent.id
-      }
-    }).userOne()
+      },
+      include: { userOne: true }
+    })
   }
 
-  return userPartner
+  return {
+    ...userCouple,
+    user: userCouple.userOne || userCouple.userTwo
+  }
 }

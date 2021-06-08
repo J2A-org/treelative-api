@@ -1,10 +1,10 @@
 export default async (parent, args, context, info) => {
   const user = await context.prisma.user.update({
-    where: args.filter,
+    where: args.user,
     data: {
       children: {
         connect: {
-          ...args.input
+          ...args.child
         }
       }
     },
@@ -20,7 +20,7 @@ export default async (parent, args, context, info) => {
       data: {
         children: {
           connect: {
-            ...args.input
+            ...args.child
           }
         }
       }
