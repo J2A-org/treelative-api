@@ -9,3 +9,7 @@ input UserOrder {
   createdAt: SortOrder
   updatedAt: SortOrder
 }
+
+input MarriageOrder {
+  date: SortOrder
+}

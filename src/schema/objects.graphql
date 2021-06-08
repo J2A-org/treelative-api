@@ -20,13 +20,15 @@ type User {
   dateOfDeath: DateTime
   createdAt: DateTime
   updatedAt: DateTime
-  marriage: Marriage
   parent: User
   children: [User!]
+  partner: User
+  marriage: Marriage
 }
 
 type Marriage {
-  partner: User!
+  id: String
   date: DateTime
   location: JSON
+  couples: [User!]
 }

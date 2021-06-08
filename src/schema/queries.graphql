@@ -10,4 +10,16 @@ type Query {
     orderBy: [UserOrder!]
     where: UserFilter
   ): [User!]
+
+  getMarriage (
+    filter: MarriageUniqueFilter
+  ): Marriage!
+
+  queryMarriage (
+    skip: Int
+    take: Int
+    cursor: MarriageUniqueFilter
+    orderBy: [MarriageOrder!]
+    where: MarriageFilter
+  ): [Marriage!]
 }

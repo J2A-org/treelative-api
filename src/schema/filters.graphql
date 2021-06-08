@@ -11,6 +11,10 @@ input UserUniqueFilter {
   email: String
 }
 
+input MarriageUniqueFilter {
+  id: String
+}
+
 input UserFilter {
   id: StringFilter
   role: RoleFilter
@@ -39,8 +43,14 @@ input UserMarriagesFilter {
   some: MarriageFilter
 }
 
+input MarriageCouplesFilter {
+  every: UserFilter
+  none: UserFilter
+  some: UserFilter
+}
+
 input MarriageFilter {
-  partner: UserFilter!
   date: DateTimeFilter
   location: JsonFilter
+  couples: MarriageCouplesFilter
 }
