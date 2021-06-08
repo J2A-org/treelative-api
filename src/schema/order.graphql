@@ -5,8 +5,11 @@ input UserOrder {
   fullName: SortOrder
   shortName: SortOrder
   dateOfBirth: SortOrder
-  dateOfMarriage: SortOrder
   dateOfDeath: SortOrder
   createdAt: SortOrder
   updatedAt: SortOrder
+}
+
+input CoupleOrder {
+  dateOfMarriage: SortOrder
 }

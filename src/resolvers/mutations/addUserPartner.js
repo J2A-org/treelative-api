@@ -1,36 +1,39 @@
 export default async (parent, args, context, info) => {
-  const coupleUser1 = await context.prisma.couple.create({
+  // create the couple
+  const couple = await context.prisma.couple.create({
     data: {
-      user1: {
+      userOne: {
         connect: args.filter
       },
-      user2: {
+      userTwo: {
         connect: args.input
       }
     }
-  }).user1()
+  })
 
-  // const user = await context.prisma.user.update({
-  //   where: args.filter,
-  //   data: {
-  //     partner: {
-  //       connect: {
-  //         ...args.input
-  //       }
-  //     }
-  //   }
-  // })
+  // connect the couple to userOne
+  const userOne = await context.prisma.user.update({
+    where: args.filter,
+    data: {
+      couple: {
+        connect: {
+          id: couple.id
+        }
+      }
+    }
+  })
 
-  // await context.prisma.user.update({
-  //   where: args.input,
-  //   data: {
-  //     partner: {
-  //       connect: {
-  //         ...args.filter
-  //       }
-  //     }
-  //   }
-  // })
+  // connect the couple to userTwo
+  await context.prisma.user.update({
+    where: args.input,
+    data: {
+      couple: {
+        connect: {
+          id: couple.id
+        }
+      }
+    }
+  })
 
-  return coupleUser1
+  return userOne
 }

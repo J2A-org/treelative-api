@@ -23,12 +23,13 @@ type User {
   parents: [User!]
   children: [User!]
   partners: [User!]
+  siblings: [User!]
 }
 
 type Couple {
   id: String!
-  user1: User!
-  user2: User!
+  userOne: User!
+  userTwo: User!
   dateOfMarriage: DateTime
   marriageLocation: JSON
 }

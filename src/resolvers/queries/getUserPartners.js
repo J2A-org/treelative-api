@@ -2,14 +2,14 @@ export default async (parent, args, context, info) => {
   const userCouples = await context.prisma.couple.findMany({
     where: {
       OR: [
-        { user1_id: parent.id },
-        { user2_id: parent.id }
+        { userOneID: parent.id },
+        { userTwoID: parent.id }
       ]
     },
-    include: { user1: true, user2: true }
+    include: { userOne: true, userTwo: true }
   })
 
-  const userPartners = userCouples.map(({ user1, user2 }) => user1.id === parent.id ? user2 : user1)
+  const userPartners = userCouples.map(({ userOne, userTwo }) => userOne.id === parent.id ? userTwo : userOne)
 
   return userPartners
 }

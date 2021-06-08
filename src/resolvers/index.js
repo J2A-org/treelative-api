@@ -14,9 +14,10 @@ import addUserPartner from './mutations/addUserPartner'
 import getUserParents from './queries/getUserParents'
 import getUserChildren from './queries/getUserChildren'
 import getUserPartners from './queries/getUserPartners'
+import getUserSiblings from './queries/getUserSiblings'
 
-import getCoupleUser1 from './queries/getCoupleUser1'
-import getCoupleUser2 from './queries/getCoupleUser2'
+import getCoupleUserOne from './queries/getCoupleUserOne'
+import getCoupleUserTwo from './queries/getCoupleUserTwo'
 import queryCouple from './queries/queryCouple'
 
 export default {
@@ -26,12 +27,13 @@ export default {
   User: {
     parents: getUserParents,
     children: getUserChildren,
-    partners: getUserPartners
+    partners: getUserPartners,
+    siblings: getUserSiblings
   },
 
   Couple: {
-    user1: getCoupleUser1,
-    user2: getCoupleUser2
+    userOne: getCoupleUserOne,
+    userTwo: getCoupleUserTwo
   },
 
   Query: {

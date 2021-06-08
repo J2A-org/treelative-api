@@ -11,6 +11,12 @@ input UserUniqueFilter {
   email: String
 }
 
+input CoupleUniqueFilter {
+  id: String
+  userOneID: String
+  userTwoID: String
+}
+
 input UserFilter {
   id: StringFilter
   role: RoleFilter
@@ -20,17 +26,26 @@ input UserFilter {
   shortName: StringFilter
   birthLocation: JsonFilter
   currentLocation: JsonFilter
-  marriageLocation: JsonFilter
   deathLocation: JsonFilter
   dateOfBirth: DateTimeFilter
-  dateOfMarriage: DateTimeFilter
   dateOfDeath: DateTimeFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
-  parent: UserFilter
+  parents: UserFilter
   children: [UserFilter!]
-  partner: UserFilter
+  couple: CoupleFilter
   AND: [UserFilter!]
   NOT: [UserFilter!]
   OR: [UserFilter!]
+}
+
+input CoupleFilter {
+  id: StringFilter
+  marriageLocation: JsonFilter
+  dateOfMarriage: DateTimeFilter
+  userOne: UserFilter
+  userTwo: UserFilter
+  AND: [CoupleFilter!]
+  NOT: [CoupleFilter!]
+  OR: [CoupleFilter!]
 }

@@ -8,34 +8,37 @@ generator client {
 }
 
 model User {
-  id               String     @id @default(uuid())
-  role             Role       @default(USER)
-  username         String     @unique
-  password         String
-  email            String?    @unique
-  fullName         String
-  shortName        String
-  birthLocation    Json?
-  currentLocation  Json?
-  deathLocation    Json?
-  dateOfBirth      DateTime?
-  dateOfDeath      DateTime?
-  createdAt        DateTime   @default(now())
-  updatedAt        DateTime   @updatedAt
-  parents          User[]     @relation("ParentChild", references: [id])
-  children         User[]     @relation("ParentChild", references: [id])
-  couplesAsUser1   Couple[]   @relation("user1")
-  couplesAsUser2   Couple[]   @relation("user2")
+  id              String    @id @default(uuid())
+  role            Role      @default(USER)
+  username        String    @unique
+  password        String
+  email           String?   @unique
+  fullName        String
+  shortName       String
+  birthLocation   Json?
+  currentLocation Json?
+  deathLocation   Json?
+  dateOfBirth     DateTime?
+  dateOfDeath     DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  parents         User[]    @relation("ParentChild", references: [id])
+  children        User[]    @relation("ParentChild", references: [id])
+  coupleID        String?
+  couple          Couple?   @relation(fields: [coupleID], references: [id])
+  coupleAsUserOne Couple?   @relation("userOne")
+  coupleAsUserTwo Couple?   @relation("userTwo")
 }
 
 model Couple {
-  user1_id          String
-  user2_id          String
-  user1             User @relation("user1", fields: [user1_id], references: [id])
-  user2             User @relation("user2", fields: [user2_id], references: [id])
-  marriageLocation  Json?
-  dateOfMarriage    DateTime?
-  @@id([user1_id, user2_id])
+  id               String   @id @default(uuid())
+  userOneID        String
+  userTwoID        String
+  userOne          User     @relation("userOne", fields: [userOneID], references: [id])
+  userTwo          User     @relation("userTwo", fields: [userTwoID], references: [id])
+  users            User[]
+  marriageLocation Json?
+  dateOfMarriage   DateTime?
 }
 
 enum Role {
