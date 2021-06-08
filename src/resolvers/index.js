@@ -13,8 +13,9 @@ import addUserPartner from './mutations/addUserPartner'
 
 import getUserParents from './queries/getUserParents'
 import getUserChildren from './queries/getUserChildren'
-import getUserPartners from './queries/getUserPartners'
+import getUserPartner from './queries/getUserPartner'
 import getUserSiblings from './queries/getUserSiblings'
+import getUserMarriage from './queries/getUserMarriage'
 
 import getCoupleUserOne from './queries/getCoupleUserOne'
 import getCoupleUserTwo from './queries/getCoupleUserTwo'
@@ -27,8 +28,9 @@ export default {
   User: {
     parents: getUserParents,
     children: getUserChildren,
-    partners: getUserPartners,
-    siblings: getUserSiblings
+    partner: getUserPartner,
+    siblings: getUserSiblings,
+    marriage: getUserMarriage
   },
 
   Couple: {

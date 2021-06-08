@@ -32,8 +32,8 @@ model User {
 
 model Couple {
   id               String   @id @default(uuid())
-  userOneID        String
-  userTwoID        String
+  userOneID        String   @unique
+  userTwoID        String   @unique
   userOne          User     @relation("userOne", fields: [userOneID], references: [id])
   userTwo          User     @relation("userTwo", fields: [userTwoID], references: [id])
   users            User[]
