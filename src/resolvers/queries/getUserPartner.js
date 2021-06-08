@@ -16,8 +16,12 @@ export default async (parent, args, context, info) => {
     })
   }
 
-  return {
-    ...userCouple,
-    user: userCouple.userOne || userCouple.userTwo
+  if (userCouple) {
+    return {
+      ...userCouple,
+      user: userCouple.userOne || userCouple.userTwo
+    }
+  } else {
+    return null
   }
 }
