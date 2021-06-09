@@ -21,13 +21,14 @@
     "standard": "16.0.3"
   },
   "dependencies": {
+    "@paljs/plugins": "3.3.3",
     "@prisma/client": "2.24.1",
-    "apollo-server": "2.25.0",
+    "apollo-server": "2.25.1",
     "bcryptjs": "2.4.3",
     "dotenv": "10.0.0",
     "esm": "3.2.25",
     "graphql": "15.5.0",
-    "graphql-scalars": "1.9.3",
+    "graphql-scalars": "1.10.0",
     "jsonwebtoken": "8.5.1"
   }
 }

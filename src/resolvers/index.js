@@ -19,13 +19,14 @@ import addUserPartner from './mutations/addUserPartner'
 
 import getUserParents from './queries/getUserParents'
 import getUserChildren from './queries/getUserChildren'
-import getUserPartner from './queries/getUserPartner'
+import getUserCouple from './queries/getUserCouple'
 import getUserSiblings from './queries/getUserSiblings'
 
 import getCouple from './queries/getCouple'
 import queryCouple from './queries/queryCouple'
 import getCoupleUserOne from './queries/getCoupleUserOne'
 import getCoupleUserTwo from './queries/getCoupleUserTwo'
+import getUserCouplePartner from './queries/getUserCouplePartner'
 
 import getProtectedField from '../utils/getProtectedField'
 
@@ -43,7 +44,7 @@ export default {
     parents: getUserParents,
     children: getUserChildren,
     siblings: getUserSiblings,
-    partner: getUserPartner
+    partner: getUserCouple
   },
 
   Couple: {
@@ -51,6 +52,10 @@ export default {
     marriageLocation: getProtectedField,
     userOne: getCoupleUserOne,
     userTwo: getCoupleUserTwo
+  },
+
+  Partner: {
+    user: getUserCouplePartner
   },
 
   Query: {

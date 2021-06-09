@@ -11,12 +11,11 @@ const isDev = process.env.NODE_ENV !== 'production'
 
 // Initialize prisma client
 const prisma = new PrismaClient({
-  log: isDev ? [{ emit: 'event', level: 'query' }] : [],
-  errorFormat: 'pretty'
+  log: isDev ? [{ emit: 'event', level: 'query' }] : []
 })
 
 // Log all prisma queries during development
-// isDev && prisma.$on('query', console.log)
+isDev && prisma.$on('query', console.log)
 
 export default new ApolloServer({
   typeDefs,
