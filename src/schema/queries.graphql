@@ -1,7 +1,7 @@
 type Query {
   getUser (
     filter: UserUniqueFilter
-  ): User!
+  ): User
 
   queryUser (
     skip: Int
@@ -13,7 +13,7 @@ type Query {
 
   getCouple (
     filter: CoupleUniqueFilter
-  ): Couple!
+  ): Couple
 
   queryCouple (
     skip: Int

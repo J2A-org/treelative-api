@@ -1,15 +1,9 @@
 export default (parent, args, context, info) => {
-  const authUser = context.user
+  // only authenticated users can view this field's value
 
-  if (!authUser) return null
+  if (!context.user) return null
 
   const field = info.path.key
 
-  if (authUser.role === 'ADMIN') {
-    return parent[field]
-  } else if (authUser.id === parent.id) {
-    return parent[field]
-  } else {
-    return null
-  }
+  return parent[field]
 }
