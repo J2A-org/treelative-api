@@ -1,4 +1,8 @@
+import { isAdmin } from '../../utils/authorization'
+
 export default async (parent, args, context, info) => {
+  isAdmin(context)
+
   // create the couple
   const couple = await context.prisma.couple.create({
     data: {
