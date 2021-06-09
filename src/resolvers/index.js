@@ -34,7 +34,6 @@ export default {
   DateTime: DateTimeResolver,
 
   User: {
-    fullName: getProtectedField,
     email: getProtectedField,
     birthLocation: getProtectedField,
     currentLocation: getProtectedField,
