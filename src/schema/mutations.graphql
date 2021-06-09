@@ -1,4 +1,6 @@
 type Mutation {
+  login (input: LoginInput!): String!
+
   addUser (input: AddUserInput!): User!
 	updateUser (user: UserUniqueFilter! input: UpdateUserInput!): User!
 	deleteUser (user: UserUniqueFilter!): User!
@@ -10,6 +12,11 @@ type Mutation {
   addCouple (input: AddCoupleInput!): Couple!
   updateCouple (couple: CoupleUniqueFilter! input: UpdateCoupleInput!): Couple!
 	deleteCouple (user: UserUniqueFilter!): Couple!
+}
+
+input LoginInput {
+  username: String!
+  password: String!
 }
 
 input AddUserInput {

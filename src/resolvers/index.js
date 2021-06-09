@@ -1,5 +1,7 @@
 import { JSONResolver, DateTimeResolver } from 'graphql-scalars'
 
+import login from './mutations/login'
+
 import getUser from './queries/getUser'
 import queryUser from './queries/queryUser'
 
@@ -25,11 +27,20 @@ import queryCouple from './queries/queryCouple'
 import getCoupleUserOne from './queries/getCoupleUserOne'
 import getCoupleUserTwo from './queries/getCoupleUserTwo'
 
+import getProtectedField from '../utils/getProtectedField'
+
 export default {
   JSON: JSONResolver,
   DateTime: DateTimeResolver,
 
   User: {
+    fullName: getProtectedField,
+    email: getProtectedField,
+    birthLocation: getProtectedField,
+    currentLocation: getProtectedField,
+    deathLocation: getProtectedField,
+    dateOfBirth: getProtectedField,
+    dateOfDeath: getProtectedField,
     parents: getUserParents,
     children: getUserChildren,
     siblings: getUserSiblings,
@@ -37,6 +48,8 @@ export default {
   },
 
   Couple: {
+    dateOfMarriage: getProtectedField,
+    marriageLocation: getProtectedField,
     userOne: getCoupleUserOne,
     userTwo: getCoupleUserTwo
   },
@@ -49,6 +62,7 @@ export default {
   },
 
   Mutation: {
+    login,
     addUser,
     updateUser,
     deleteUser,

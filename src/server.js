@@ -16,7 +16,7 @@ const prisma = new PrismaClient({
 })
 
 // Log all prisma queries during development
-isDev && prisma.$on('query', console.log)
+// isDev && prisma.$on('query', console.log)
 
 export default new ApolloServer({
   typeDefs,
