@@ -23,7 +23,7 @@ export const authenticateUserToken = async (req, prisma) => {
 
     const user = await prisma.user.findUnique({
       where: { id },
-      select: { id: true, role: true }
+      select: { id: true, fullName: true, role: true }
     })
 
     return user

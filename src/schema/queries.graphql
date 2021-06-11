@@ -1,4 +1,6 @@
 type Query {
+  whoAmI: User!
+
   getUser (
     filter: UserUniqueFilter
   ): User

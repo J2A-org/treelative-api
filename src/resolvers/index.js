@@ -1,6 +1,7 @@
 import { JSONResolver, DateTimeResolver } from 'graphql-scalars'
 
 import login from './mutations/login'
+import whoAmI from './queries/whoAmI'
 
 import getUser from './queries/getUser'
 import queryUser from './queries/queryUser'
@@ -59,6 +60,7 @@ export default {
   },
 
   Query: {
+    whoAmI,
     getUser,
     queryUser,
     getCouple,
