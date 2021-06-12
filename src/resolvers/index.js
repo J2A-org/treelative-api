@@ -5,6 +5,7 @@ import whoAmI from './queries/whoAmI'
 
 import getUser from './queries/getUser'
 import queryUser from './queries/queryUser'
+import countUser from './queries/countUser'
 
 import addUser from './mutations/addUser'
 import updateUser from './mutations/updateUser'
@@ -25,6 +26,8 @@ import getUserSiblings from './queries/getUserSiblings'
 
 import getCouple from './queries/getCouple'
 import queryCouple from './queries/queryCouple'
+import countCouple from './queries/countCouple'
+
 import getCoupleUserOne from './queries/getCoupleUserOne'
 import getCoupleUserTwo from './queries/getCoupleUserTwo'
 import getUserCouplePartner from './queries/getUserCouplePartner'
@@ -63,8 +66,10 @@ export default {
     whoAmI,
     getUser,
     queryUser,
+    countUser,
     getCouple,
-    queryCouple
+    queryCouple,
+    countCouple
   },
 
   Mutation: {

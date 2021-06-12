@@ -8,7 +8,7 @@ type Query {
   queryUser (
     skip: Int
     take: Int
-    cursor: UserUniqueFilter
+    cursor: UserFilter
     orderBy: [UserOrder!]
     where: UserFilter
   ): [User!]
@@ -17,11 +17,27 @@ type Query {
     filter: CoupleUniqueFilter
   ): Couple
 
+  countUser (
+    skip: Int
+    take: Int
+    cursor: UserFilter
+    orderBy: [UserOrder!]
+    where: UserFilter
+  ): Int
+
   queryCouple (
     skip: Int
     take: Int
-    cursor: CoupleUniqueFilter
+    cursor: CoupleFilter
     orderBy: [CoupleOrder!]
     where: CoupleFilter
   ): [Couple!]
+
+  countCouple (
+    skip: Int
+    take: Int
+    cursor: CoupleFilter
+    orderBy: [CoupleOrder!]
+    where: CoupleFilter
+  ): Int
 }
