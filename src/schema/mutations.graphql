@@ -20,10 +20,10 @@ input LoginInput {
 }
 
 input AddUserInput {
-  role: Role!
   username: String!
   password: String!
   email: String
+  phoneNumber: String
   fullName: String!
   shortName: String!
   birthLocation: JSON
@@ -37,6 +37,7 @@ input UpdateUserInput {
   role: Role
   username: String
   email: String
+  phoneNumber: String
   fullName: String
   shortName: String
   birthLocation: JSON

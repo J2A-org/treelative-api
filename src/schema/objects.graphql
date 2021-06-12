@@ -11,6 +11,7 @@ type User {
   role: Role
   username: String!
   email: String
+  phoneNumber: String
   fullName: String
   shortName: String
   birthLocation: JSON
