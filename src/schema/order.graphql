@@ -1,4 +1,5 @@
 input UserOrder {
+  id: SortOrder
   role: SortOrder
   username: SortOrder
   email: SortOrder
@@ -12,5 +13,6 @@ input UserOrder {
 }
 
 input CoupleOrder {
+  id: SortOrder
   dateOfMarriage: SortOrder
 }
