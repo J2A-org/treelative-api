@@ -4,7 +4,7 @@ export default async (parent, args, context, info) => {
   isAdmin(context)
 
   const user = await context.prisma.user.update({
-    where: args.filter,
+    where: args.user,
     data: args.input
   })
 
