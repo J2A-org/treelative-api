@@ -48,18 +48,15 @@ export default {
     parents: getUserParents,
     children: getUserChildren,
     siblings: getUserSiblings,
-    partner: getUserCouple
+    couple: getUserCouple
   },
 
   Couple: {
     dateOfMarriage: getProtectedField,
     marriageLocation: getProtectedField,
     userOne: getCoupleUserOne,
-    userTwo: getCoupleUserTwo
-  },
-
-  Partner: {
-    user: getUserCouplePartner
+    userTwo: getCoupleUserTwo,
+    partner: getUserCouplePartner
   },
 
   Query: {

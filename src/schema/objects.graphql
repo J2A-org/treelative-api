@@ -23,7 +23,7 @@ type User {
   updatedAt: DateTime
   parents: [User!]
   children: [User!]
-  partner: Partner
+  couple: Couple
   siblings: [User!]
 }
 
@@ -31,12 +31,7 @@ type Couple {
   id: String!
   userOne: User!
   userTwo: User!
-  dateOfMarriage: DateTime
-  marriageLocation: JSON
-}
-
-type Partner {
-  user: User
+  partner: User! # either userOne or userTwo depending on who is requesting
   dateOfMarriage: DateTime
   marriageLocation: JSON
 }
