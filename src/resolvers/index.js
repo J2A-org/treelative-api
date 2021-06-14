@@ -30,7 +30,7 @@ import countCouple from './queries/countCouple'
 
 import getCoupleUserOne from './queries/getCoupleUserOne'
 import getCoupleUserTwo from './queries/getCoupleUserTwo'
-import getUserCouplePartner from './queries/getUserCouplePartner'
+import getCouplePartner from './queries/getCouplePartner'
 
 import getProtectedField from '../utils/getProtectedField'
 
@@ -56,7 +56,7 @@ export default {
     marriageLocation: getProtectedField,
     userOne: getCoupleUserOne,
     userTwo: getCoupleUserTwo,
-    partner: getUserCouplePartner
+    partner: getCouplePartner
   },
 
   Query: {
