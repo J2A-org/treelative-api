@@ -17,7 +17,6 @@ import deleteCouple from './mutations/deleteCouple'
 
 import addUserParent from './mutations/addUserParent'
 import addUserChild from './mutations/addUserChild'
-import addUserPartner from './mutations/addUserPartner'
 
 import getUserParents from './queries/getUserParents'
 import getUserChildren from './queries/getUserChildren'
@@ -31,6 +30,8 @@ import countCouple from './queries/countCouple'
 import getCoupleUserOne from './queries/getCoupleUserOne'
 import getCoupleUserTwo from './queries/getCoupleUserTwo'
 import getCouplePartner from './queries/getCouplePartner'
+
+import getUserAvailablePartners from './queries/getUserAvailablePartners'
 
 import getProtectedField from '../utils/getProtectedField'
 
@@ -66,7 +67,8 @@ export default {
     countUser,
     getCouple,
     queryCouple,
-    countCouple
+    countCouple,
+    getUserAvailablePartners
   },
 
   Mutation: {
@@ -76,7 +78,6 @@ export default {
     deleteUser,
     addUserParent,
     addUserChild,
-    addUserPartner,
     addCouple,
     updateCouple,
     deleteCouple

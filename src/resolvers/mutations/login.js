@@ -8,7 +8,8 @@ export default async (parent, args, context, info) => {
   const { username, password } = args.input
 
   const user = await context.prisma.user.findUnique({
-    where: { username }
+    where: { username },
+    select: { id: true, password: true }
   })
 
   if (!user) {

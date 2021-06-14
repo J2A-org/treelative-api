@@ -40,4 +40,13 @@ type Query {
     orderBy: [CoupleOrder!]
     where: CoupleFilter
   ): Int
+
+  getUserAvailablePartners (
+    userID: String
+    skip: Int
+    take: Int
+    cursor: UserFilter
+    orderBy: [UserOrder!]
+    where: UserFilter
+  ): [User!]
 }

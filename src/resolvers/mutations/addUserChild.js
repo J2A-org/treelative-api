@@ -1,18 +1,22 @@
 import { isAdmin } from '../../utils/authorization'
 
+import { PrismaSelect } from '@paljs/plugins'
+
 export default async (parent, args, context, info) => {
   isAdmin(context)
 
+  const { userID, childID } = args
+
+  const { select } = new PrismaSelect(info).value
+
   const user = await context.prisma.user.update({
-    where: args.user,
+    where: { id: userID },
     data: {
       children: {
-        connect: {
-          ...args.child
-        }
+        connect: { id: childID }
       }
     },
-    include: { couple: true }
+    select: { ...select, id: true, couple: true }
   })
 
   // if the user has a couple - add that couple as a parent to this child
@@ -23,11 +27,10 @@ export default async (parent, args, context, info) => {
       where: { id: userCoupleID },
       data: {
         children: {
-          connect: {
-            ...args.child
-          }
+          connect: { id: childID }
         }
-      }
+      },
+      select: { id: true }
     })
   }
 
