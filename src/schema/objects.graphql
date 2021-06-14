@@ -31,7 +31,7 @@ type Couple {
   id: String!
   userOne: User!
   userTwo: User!
-  partner: User! # either userOne or userTwo depending on who is requesting
+  partner: User # either userOne or userTwo depending on who is requesting
   dateOfMarriage: DateTime
   marriageLocation: JSON
 }
