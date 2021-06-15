@@ -3,6 +3,7 @@ type Mutation {
 
   addUser (input: AddUserInput!): User!
 	updateUser (userID: String! input: UpdateUserInput!): User!
+  resetUserPassword (userID: String! password: String!): User!
 	deleteUser (userID: String!): User!
 
   addUserParent (userID: String! parentID: String!): User!
