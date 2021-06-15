@@ -1,5 +1,8 @@
 # Treelative API
 
+## Prerequisite
+- Copy `.env.example` as `.env` with the proper values
+
 ## Development
 - Copy `.env.example` as `.env` and set the proper credentials for the database
 - Install dependencies by running `npm i`
