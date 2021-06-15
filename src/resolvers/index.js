@@ -16,7 +16,9 @@ import updateCouple from './mutations/updateCouple'
 import deleteCouple from './mutations/deleteCouple'
 
 import addUserParent from './mutations/addUserParent'
+import deleteUserParent from './mutations/deleteUserParent'
 import addUserChild from './mutations/addUserChild'
+import deleteUserChild from './mutations/deleteUserChild'
 
 import getUserParents from './queries/getUserParents'
 import getUserChildren from './queries/getUserChildren'
@@ -79,7 +81,9 @@ export default {
     updateUser,
     deleteUser,
     addUserParent,
+    deleteUserParent,
     addUserChild,
+    deleteUserChild,
     addCouple,
     updateCouple,
     deleteCouple

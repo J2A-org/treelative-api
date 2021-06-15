@@ -62,5 +62,5 @@ export default async (parent, args, context, info) => {
     select: { ...select, id: true }
   })
 
-  return usersFamily.filter(({ id }) => id !== userID)
+  return usersFamily
 }

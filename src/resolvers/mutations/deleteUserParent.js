@@ -13,14 +13,13 @@ export default async (parent, args, context, info) => {
     where: { id: userID },
     data: {
       parents: {
-        set: [],
-        connect: { id: parentID }
+        disconnect: { id: parentID }
       }
     },
     select: { ...select, id: true }
   })
 
-  // if the parent has a couple - add that couple as a parent to this user
+  // if the parent has a couple - remove that couple as a parent to this user
   const userParent = await context.prisma.user.findUnique({
     where: { id: args.parentID },
     include: { couple: true }
@@ -33,7 +32,7 @@ export default async (parent, args, context, info) => {
       where: { id: userID },
       data: {
         parents: {
-          connect: { id: userParentCoupleID }
+          disconnect: { id: userParentCoupleID }
         }
       },
       select: { id: true }

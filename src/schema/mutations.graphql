@@ -6,7 +6,9 @@ type Mutation {
 	deleteUser (userID: String!): User!
 
   addUserParent (userID: String! parentID: String!): User!
+  deleteUserParent (userID: String! parentID: String!): User!
   addUserChild (userID: String! childID: String!): User!
+  deleteUserChild (userID: String! childID: String!): User!
 
   addCouple (input: AddCoupleInput!): Couple!
   updateCouple (coupleID: String! input: UpdateCoupleInput!): Couple!
