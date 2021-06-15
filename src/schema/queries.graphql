@@ -50,6 +50,15 @@ type Query {
     where: UserFilter
   ): [User!]
 
+  getUserAvailableChildren (
+    userID: String
+    skip: Int
+    take: Int
+    cursor: UserFilter
+    orderBy: [UserOrder!]
+    where: UserFilter
+  ): [User!]
+
   getUserFamily (
     userID: String!
   ): [User!]

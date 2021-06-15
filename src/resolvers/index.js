@@ -34,6 +34,7 @@ import getCoupleUserTwo from './queries/getCoupleUserTwo'
 import getCouplePartner from './queries/getCouplePartner'
 
 import getUserAvailablePartners from './queries/getUserAvailablePartners'
+import getUserAvailableChildren from './queries/getUserAvailableChildren'
 import getUserFamily from './queries/getUserFamily'
 
 import getProtectedField from '../utils/getProtectedField'
@@ -72,6 +73,7 @@ export default {
     queryCouple,
     countCouple,
     getUserAvailablePartners,
+    getUserAvailableChildren,
     getUserFamily
   },
 
