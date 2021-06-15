@@ -39,6 +39,23 @@ export default async (parent, args, context, info) => {
               }
             }
           }
+        },
+        {
+          couple: {
+            OR: [
+              {
+                userOne: {
+                  id: userID
+                }
+              },
+              {
+                userTwo: {
+                  id: userID
+                }
+              }
+            ]
+
+          }
         }
       ]
     },
