@@ -32,12 +32,18 @@ input UserFilter {
   dateOfDeath: DateTimeFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
-  parents: UserFilter
-  children: [UserFilter!]
+  parents: ParentChildFilter
+  children: ParentChildFilter
   couple: CoupleFilter
   AND: [UserFilter!]
   NOT: [UserFilter!]
   OR: [UserFilter!]
+}
+
+input ParentChildFilter {
+  every: [UserFilter!]
+  some: [UserFilter!]
+  none: [UserFilter!]
 }
 
 input CoupleFilter {

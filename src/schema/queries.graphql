@@ -49,4 +49,8 @@ type Query {
     orderBy: [UserOrder!]
     where: UserFilter
   ): [User!]
+
+  getUserFamily (
+    userID: String!
+  ): [User!]
 }
