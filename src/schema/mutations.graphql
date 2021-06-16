@@ -15,6 +15,10 @@ type Mutation {
   addCouple (input: AddCoupleInput!): Couple!
   updateCouple (coupleID: String! input: UpdateCoupleInput!): Couple!
 	deleteCouple (coupleID: String!): Couple!
+
+  addSocialLink (input: AddSocialLinkInput!): SocialLink!
+  updateSocialLink (socialLinkID: String! input: UpdateSocialLinkInput!): SocialLink!
+	deleteSocialLink (socialLinkID: String!): SocialLink!
 }
 
 input LoginInput {
@@ -60,4 +64,15 @@ input AddCoupleInput {
 input UpdateCoupleInput {
   marriageLocation: JSON
   dateOfMarriage: DateTime
+}
+
+input AddSocialLinkInput {
+  userID: String!
+  type: Social!
+  url: String!
+}
+
+input UpdateSocialLinkInput {
+  type: Social
+  url: String
 }

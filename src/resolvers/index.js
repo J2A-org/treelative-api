@@ -22,10 +22,12 @@ import deleteUserParent from './mutations/deleteUserParent'
 import addUserChild from './mutations/addUserChild'
 import deleteUserChild from './mutations/deleteUserChild'
 
+import getUserAvatar from './queries/getUserAvatar'
 import getUserParents from './queries/getUserParents'
 import getUserChildren from './queries/getUserChildren'
 import getUserCouple from './queries/getUserCouple'
 import getUserSiblings from './queries/getUserSiblings'
+import getUserSocialLinks from './queries/getUserSocialLinks'
 
 import getCouple from './queries/getCouple'
 import queryCouple from './queries/queryCouple'
@@ -39,6 +41,12 @@ import getUserAvailablePartners from './queries/getUserAvailablePartners'
 import getUserAvailableChildren from './queries/getUserAvailableChildren'
 import getUserFamily from './queries/getUserFamily'
 
+import addSocialLink from './mutations/addSocialLink'
+import updateSocialLink from './mutations/updateSocialLink'
+import deleteSocialLink from './mutations/deleteSocialLink'
+
+import getSocialLinkUser from './queries/getSocialLinkUser'
+
 import getProtectedField from '../utils/getProtectedField'
 
 export default {
@@ -47,6 +55,7 @@ export default {
 
   User: {
     email: getProtectedField,
+    avatar: getUserAvatar,
     birthLocation: getProtectedField,
     currentLocation: getProtectedField,
     deathLocation: getProtectedField,
@@ -55,7 +64,8 @@ export default {
     parents: getUserParents,
     children: getUserChildren,
     siblings: getUserSiblings,
-    couple: getUserCouple
+    couple: getUserCouple,
+    socialLinks: getUserSocialLinks
   },
 
   Couple: {
@@ -64,6 +74,10 @@ export default {
     userOne: getCoupleUserOne,
     userTwo: getCoupleUserTwo,
     partner: getCouplePartner
+  },
+
+  SocialLink: {
+    user: getSocialLinkUser
   },
 
   Query: {
@@ -92,6 +106,9 @@ export default {
     deleteUserChild,
     addCouple,
     updateCouple,
-    deleteCouple
+    deleteCouple,
+    addSocialLink,
+    updateSocialLink,
+    deleteSocialLink
   }
 }

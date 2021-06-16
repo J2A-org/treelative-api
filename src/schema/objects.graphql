@@ -14,6 +14,7 @@ type User {
   phoneNumber: String
   fullName: String
   shortName: String
+  avatar: String
   birthLocation: JSON
   currentLocation: JSON
   deathLocation: JSON
@@ -25,6 +26,7 @@ type User {
   children: [User!]
   couple: Couple
   siblings: [User!]
+  socialLinks: [SocialLink!]
 }
 
 type Couple {
@@ -34,4 +36,19 @@ type Couple {
   partner: User # either userOne or userTwo depending on who is requesting
   dateOfMarriage: DateTime
   marriageLocation: JSON
+}
+
+type SocialLink {
+  id: String!
+  user: User!
+  type: Social!
+  url: String!
+}
+
+enum Social {
+  FACEBOOK
+  INSTAGRAM
+  TWITTER
+  LINKEDIN
+  WEBSITE
 }
