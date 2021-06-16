@@ -54,8 +54,9 @@ export default {
   DateTime: DateTimeResolver,
 
   User: {
-    email: getProtectedField,
     avatar: getUserAvatar,
+    email: getProtectedField,
+    phoneNumber: getProtectedField,
     birthLocation: getProtectedField,
     currentLocation: getProtectedField,
     deathLocation: getProtectedField,

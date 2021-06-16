@@ -52,6 +52,7 @@ input UpdateUserInput {
   deathLocation: JSON
   dateOfBirth: DateTime
   dateOfDeath: DateTime
+  settings: JSON
 }
 
 input AddCoupleInput {
