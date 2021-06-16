@@ -9,6 +9,7 @@ import countUser from './queries/countUser'
 
 import addUser from './mutations/addUser'
 import updateUser from './mutations/updateUser'
+import updateUserAvatar from './mutations/updateUserAvatar'
 import resetUserPassword from './mutations/resetUserPassword'
 import deleteUser from './mutations/deleteUser'
 
@@ -82,6 +83,7 @@ export default {
     login,
     addUser,
     updateUser,
+    updateUserAvatar,
     resetUserPassword,
     deleteUser,
     addUserParent,
