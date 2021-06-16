@@ -70,8 +70,6 @@ export default {
   },
 
   Couple: {
-    dateOfMarriage: getProtectedField,
-    marriageLocation: getProtectedField,
     userOne: getCoupleUserOne,
     userTwo: getCoupleUserTwo,
     partner: getCouplePartner

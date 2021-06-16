@@ -1,11 +1,15 @@
-import { isAdmin } from '../../utils/authorization'
+import { ApolloError } from 'apollo-server'
+
+import { isOwner } from '../../utils/authorization'
 
 import { PrismaSelect } from '@paljs/plugins'
 
 export default async (parent, args, context, info) => {
-  isAdmin(context)
-
   const { userID, parentID } = args
+
+  if (!isOwner(context, userID) && !isOwner(context, parentID)) {
+    throw new ApolloError('You are not authorized to perform this action', 'UNAUTHORIZED')
+  }
 
   const { select } = new PrismaSelect(info).value
 

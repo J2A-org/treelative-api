@@ -4,12 +4,13 @@ export const isAuthenticated = (context) => {
   if (!context.user) {
     throw new ApolloError('You must be authenticated to perform this action', 'UNAUTHENTICATED')
   }
+  return context.user
 }
 
 export const isAdmin = (context) => {
-  isAuthenticated(context)
+  return isAuthenticated(context) && context.user.role === 'ADMIN'
+}
 
-  if (context.user.role !== 'ADMIN') {
-    throw new ApolloError('You are not authorized to perform this action', 'UNAUTHORIZED')
-  }
+export const isOwner = (context, userID) => {
+  return isAdmin(context) || context.user.id === userID
 }

@@ -1,11 +1,13 @@
 import { ApolloError } from 'apollo-server'
 
-import { isAdmin } from '../../utils/authorization'
+import { isOwner } from '../../utils/authorization'
 
 import minioClient from '../../utils/minioClient'
 
 export default async (parent, args, context, info) => {
-  isAdmin(context)
+  if (!isOwner(context, args.userID)) {
+    throw new ApolloError('You are not authorized to perform this action', 'UNAUTHORIZED')
+  }
 
   const user = await context.prisma.user.findUnique({
     where: { id: args.userID },
