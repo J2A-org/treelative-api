@@ -49,6 +49,8 @@ import getSocialLinkUser from './queries/getSocialLinkUser'
 
 import getProtectedField from '../utils/getProtectedField'
 
+import getNetworkData from './queries/getNetworkData'
+
 export default {
   JSON: JSONResolver,
   DateTime: DateTimeResolver,
@@ -89,7 +91,8 @@ export default {
     countCouple,
     getUserAvailablePartners,
     getUserAvailableChildren,
-    getUserFamily
+    getUserFamily,
+    getNetworkData
   },
 
   Mutation: {

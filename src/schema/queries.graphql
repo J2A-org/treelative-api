@@ -62,4 +62,6 @@ type Query {
   getUserFamily (
     userID: String!
   ): [User!]
+
+  getNetworkData: JSON!
 }
