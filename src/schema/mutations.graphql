@@ -27,8 +27,6 @@ input LoginInput {
 }
 
 input AddUserInput {
-  username: String!
-  password: String!
   email: String
   phoneNumber: String
   fullName: String!
