@@ -21,10 +21,10 @@ export default async (parent, args, context, info) => {
 
   const nodeEdges = couples.map(couple => (
     [
-      { from: couple.userOneID, to: couple.id },
-      { from: couple.userTwoID, to: couple.id },
+      { from: couple.userOneID, to: couple.id, group: 'child' },
+      { from: couple.userTwoID, to: couple.id, group: 'child' },
       ...couple.userOne.children.map(child => (
-        { from: couple.id, to: child.id }
+        { from: couple.id, to: child.id, group: 'parent' }
       ))
     ]
   )).flat()
