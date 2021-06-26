@@ -27,6 +27,7 @@ type User {
   children: [User!]
   couple: Couple
   siblings: [User!]
+  family: [User!]
   socialLinks: [SocialLink!]
 }
 

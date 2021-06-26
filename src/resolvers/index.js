@@ -67,6 +67,7 @@ export default {
     parents: getUserParents,
     children: getUserChildren,
     siblings: getUserSiblings,
+    family: getUserFamily,
     couple: getUserCouple,
     socialLinks: getUserSocialLinks
   },

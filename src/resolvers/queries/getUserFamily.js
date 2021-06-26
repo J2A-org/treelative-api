@@ -8,7 +8,7 @@ export default async (parent, args, context, info) => {
     throw new ApolloError('You must be authenticated to perform this action', 'UNAUTHENTICATED')
   }
 
-  const { userID } = args
+  const { userID = parent.id } = args
 
   const { select } = new PrismaSelect(info).value
 
