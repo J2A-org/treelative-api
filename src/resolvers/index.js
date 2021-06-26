@@ -83,6 +83,7 @@ export default {
   },
 
   Query: {
+    healthCheck: () => 'Welcome to Treelative API',
     whoAmI,
     getUser,
     queryUser,
