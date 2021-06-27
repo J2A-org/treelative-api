@@ -38,6 +38,7 @@ import getCoupleUserTwo from './queries/getCoupleUserTwo'
 import getCouplePartner from './queries/getCouplePartner'
 
 import getUserAvailablePartners from './queries/getUserAvailablePartners'
+import getUserAvailableParents from './queries/getUserAvailableParents'
 import getUserAvailableChildren from './queries/getUserAvailableChildren'
 import getUserFamily from './queries/getUserFamily'
 
@@ -92,6 +93,7 @@ export default {
     queryCouple,
     countCouple,
     getUserAvailablePartners,
+    getUserAvailableParents,
     getUserAvailableChildren,
     getUserFamily,
     getNetworkData
