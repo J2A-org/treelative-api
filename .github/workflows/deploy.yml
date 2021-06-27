@@ -1,4 +1,4 @@
-name: Publish Docker Image
+name: Deploy
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
         with:
           push: true
           tags: jana19/treelative-client:latest
-      - name: Redeploy on portainer
+      - name: Redeploy on Portainer
         uses: wei/curl@master
         with:
           args: -X POST ${{ secrets.DEPLOY_API }}
