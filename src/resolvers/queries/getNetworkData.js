@@ -1,6 +1,6 @@
 export default async (parent, args, context, info) => {
   const users = await context.prisma.user.findMany({
-    select: { id: true, shortName: true, role: true }
+    select: { id: true, shortName: true, fullName: true, role: true }
   })
 
   const couples = await context.prisma.couple.findMany({
@@ -11,7 +11,8 @@ export default async (parent, args, context, info) => {
     id: user.id,
     label: user.shortName,
     group: user.role === 'ADMIN' ? 'admin' : 'individual',
-    image: `https://${process.env.MINIO_ENDPOINT}/avatar/${user.id}.jpg`
+    image: `https://${process.env.MINIO_ENDPOINT}/avatar/${user.id}.jpg`,
+    brokenImage: `https://ui-avatars.com/api/?name=${user.fullName}&background=random&rounded=true&font-size=0.5&bold=true`
   }))
 
   const nodeCouples = couples.map(couple => ({
