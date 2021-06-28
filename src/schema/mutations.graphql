@@ -1,5 +1,6 @@
 type Mutation {
   login (input: LoginInput!): String!
+  loginWithProvider (email: String! token: String!): String!
 
   addUser (input: AddUserInput!): User!
 	updateUser (userID: String! input: UpdateUserInput!): User!
