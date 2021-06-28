@@ -12,6 +12,10 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
+      - name: Decrypt firebaseAuth secrets
+        run: ./.github/scripts/decrypt_secret.sh
+        env:
+          DECRYPT_PASSPHRASE: ${{ secrets.DECRYPT_PASSPHRASE }}
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
         with:
