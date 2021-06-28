@@ -11,7 +11,7 @@ export default async (parent, args, context, info) => {
     id: user.id,
     label: user.shortName,
     group: user.role === 'ADMIN' ? 'admin' : 'individual',
-    image: `https://${process.env.MINIO_ENDPOINT}/avatar/${user.id}.jpg`,
+    image: user.role === 'ADMIN' ? 'https://res.cloudinary.com/arun99-dev/image/upload/v1624889786/adminNode_h3od6t.png' : `https://${process.env.MINIO_ENDPOINT}/avatar/${user.id}.jpg`,
     brokenImage: `https://ui-avatars.com/api/?name=${user.fullName}&background=random&rounded=true&font-size=0.5&bold=true`
   }))
 
