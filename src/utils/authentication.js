@@ -7,8 +7,8 @@ const {
   JWT_EXPIRY = '2h'
 } = process.env
 
-export const generateToken = id => jwt.sign(
-  { id }, JWT_SECRET, { expiresIn: JWT_EXPIRY }
+export const generateToken = user => jwt.sign(
+  user, JWT_SECRET, { expiresIn: JWT_EXPIRY }
 )
 
 export const authenticateUserToken = async (req, prisma) => {

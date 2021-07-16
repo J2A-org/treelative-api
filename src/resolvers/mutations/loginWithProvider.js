@@ -16,12 +16,12 @@ export default async (parent, args, context, info) => {
 
   const user = await context.prisma.user.findUnique({
     where: { email },
-    select: { id: true }
+    select: { id: true, role: true }
   })
 
   if (!user) {
     throw new ApolloError(`We could not find an account associated with the email ${email}`, 'UNREGISTERED')
   }
 
-  return generateToken(user.id)
+  return generateToken(user)
 }

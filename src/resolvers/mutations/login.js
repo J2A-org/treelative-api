@@ -9,7 +9,7 @@ export default async (parent, args, context, info) => {
 
   const user = await context.prisma.user.findUnique({
     where: { username },
-    select: { id: true, password: true }
+    select: { id: true, role: true, password: true }
   })
 
   if (!user) {
@@ -20,7 +20,7 @@ export default async (parent, args, context, info) => {
     throw new ApolloError('Incorrect email or password.', 'UNAUTHENTICATED')
   }
 
-  const token = generateToken(user.id)
+  const token = generateToken(user)
 
   return token
 }
