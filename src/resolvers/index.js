@@ -52,6 +52,7 @@ import getSocialLinkUser from './queries/getSocialLinkUser'
 import getProtectedField from '../utils/getProtectedField'
 
 import getNetworkData from './queries/getNetworkData'
+import getMapData from './queries/getMapData'
 
 export default {
   JSON: JSONResolver,
@@ -97,7 +98,8 @@ export default {
     getUserAvailableParents,
     getUserAvailableChildren,
     getUserFamily,
-    getNetworkData
+    getNetworkData,
+    getMapData
   },
 
   Mutation: {
