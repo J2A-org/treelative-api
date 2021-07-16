@@ -53,6 +53,7 @@ import getProtectedField from '../utils/getProtectedField'
 
 import getNetworkData from './queries/getNetworkData'
 import getMapData from './queries/getMapData'
+import getAgeData from './queries/getAgeData'
 
 export default {
   JSON: JSONResolver,
@@ -99,7 +100,8 @@ export default {
     getUserAvailableChildren,
     getUserFamily,
     getNetworkData,
-    getMapData
+    getMapData,
+    getAgeData
   },
 
   Mutation: {
