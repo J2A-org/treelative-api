@@ -55,6 +55,8 @@ import getNetworkData from './queries/getNetworkData'
 import getMapData from './queries/getMapData'
 import getAgeData from './queries/getAgeData'
 
+import getInsights from './queries/getInsights'
+
 export default {
   JSON: JSONResolver,
   DateTime: DateTimeResolver,
@@ -101,7 +103,8 @@ export default {
     getUserFamily,
     getNetworkData,
     getMapData,
-    getAgeData
+    getAgeData,
+    getInsights
   },
 
   Mutation: {

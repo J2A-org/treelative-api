@@ -78,4 +78,6 @@ type Query {
   getMapData: JSON!
   getAgeData: JSON!
 
+  getInsights: JSON!
+
 }
