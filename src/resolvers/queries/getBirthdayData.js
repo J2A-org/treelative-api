@@ -33,7 +33,5 @@ export default async (parent, args, context, info) => {
     {}
   )
 
-  console.log(orderedResult)
-
   return orderedResult
 }
