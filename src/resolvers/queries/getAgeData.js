@@ -1,6 +1,6 @@
 export default async (parent, args, context, info) => {
   const users = await context.prisma.user.findMany({
-    select: { id: true, shortName: true, fullName: true, avatar: true, dateOfBirth: true }
+    select: { id: true, shortName: true, fullName: true, dateOfBirth: true }
   })
 
   const result = {}
