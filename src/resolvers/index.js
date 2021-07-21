@@ -54,6 +54,7 @@ import getProtectedField from '../utils/getProtectedField'
 import getNetworkData from './queries/getNetworkData'
 import getMapData from './queries/getMapData'
 import getAgeData from './queries/getAgeData'
+import getBirthdayData from './queries/getBirthdayData'
 
 import getInsights from './queries/getInsights'
 
@@ -104,6 +105,7 @@ export default {
     getNetworkData,
     getMapData,
     getAgeData,
+    getBirthdayData,
     getInsights
   },
 
