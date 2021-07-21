@@ -1,3 +1,15 @@
+// calculate the age in years given a date of birth
+const calculateAge = (birthday) => {
+  const today = new Date()
+  const birthDate = new Date(birthday)
+  let age = today.getFullYear() - birthDate.getFullYear()
+  const m = today.getMonth() - birthDate.getMonth()
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--
+  }
+  return age
+}
+
 export default async (parent, args, context, info) => {
   const users = await context.prisma.user.findMany({
     select: { id: true, shortName: true, fullName: true, dateOfBirth: true }
@@ -6,12 +18,18 @@ export default async (parent, args, context, info) => {
   const result = {}
 
   for (const user of users) {
-    const birthYear = user.dateOfBirth ? new Date(user.dateOfBirth).toLocaleDateString('default', { month: 'short', day: 'numeric' }) : null
-    if (!birthYear) continue
-    if (result[birthYear]) {
-      result[birthYear] = [...result[birthYear], user]
+    const birthMonthDay = user.dateOfBirth ? user.dateOfBirth.toISOString().slice(5, 10) : null
+
+    if (!birthMonthDay) continue
+
+    user.avatar = `https://${process.env.MINIO_ENDPOINT}/avatar/${user.id}.jpg`
+    user.brokenAvatar = `https://ui-avatars.com/api/?name=${user.fullName}&background=random&rounded=true&font-size=0.5&bold=true`
+    user.age = calculateAge(user.dateOfBirth)
+
+    if (result[birthMonthDay]) {
+      result[birthMonthDay] = [...result[birthMonthDay], user]
     } else {
-      result[birthYear] = [user]
+      result[birthMonthDay] = [user]
     }
   }
 
