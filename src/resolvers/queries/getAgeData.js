@@ -6,7 +6,8 @@ export default async (parent, args, context, info) => {
   const result = {}
 
   for (const user of users) {
-    const birthYear = user.dateOfBirth ? new Date(user.dateOfBirth).toLocaleString('default', { year: 'numeric' }) : 'Unknown'
+    const birthYear = user.dateOfBirth ? new Date(user.dateOfBirth).toLocaleString('default', { year: 'numeric' }) : null
+    if (!birthYear) continue
     if (result[birthYear]) {
       result[birthYear] = [...result[birthYear], user]
     } else {
