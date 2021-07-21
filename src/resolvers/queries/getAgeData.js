@@ -11,7 +11,7 @@ export default async (parent, args, context, info) => {
     if (result[birthYear]) {
       result[birthYear] = [...result[birthYear], user]
     } else {
-      result[birthYear] = [user]
+      result[birthYear] = [{ ...user, avatar: `https://${process.env.MINIO_ENDPOINT}/avatar/${user.id}.jpg` }]
     }
   }
 
