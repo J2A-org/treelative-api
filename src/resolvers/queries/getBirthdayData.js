@@ -1,6 +1,5 @@
 // calculate the age in years given a date of birth
-const calculateAge = (birthday) => {
-  const today = new Date()
+const calculateAge = (birthday, today) => {
   const birthDate = new Date(birthday)
   let age = today.getFullYear() - birthDate.getFullYear()
   const m = today.getMonth() - birthDate.getMonth()
@@ -12,7 +11,7 @@ const calculateAge = (birthday) => {
 
 export default async (parent, args, context, info) => {
   const users = await context.prisma.user.findMany({
-    select: { id: true, shortName: true, fullName: true, dateOfBirth: true }
+    select: { id: true, shortName: true, fullName: true, dateOfBirth: true, dateOfDeath: true }
   })
 
   const result = {}
@@ -24,7 +23,7 @@ export default async (parent, args, context, info) => {
 
     user.avatar = `https://${process.env.MINIO_ENDPOINT}/avatar/${user.id}.jpg`
     user.brokenAvatar = `https://ui-avatars.com/api/?name=${user.fullName}&background=random&rounded=true&font-size=0.5&bold=true`
-    user.age = calculateAge(user.dateOfBirth)
+    user.age = calculateAge(user.dateOfBirth, user.dateOfDeath ? new Date(user.dateOfDeath) : new Date())
 
     if (result[birthMonthDay]) {
       result[birthMonthDay] = [...result[birthMonthDay], user]
