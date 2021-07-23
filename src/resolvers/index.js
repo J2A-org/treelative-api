@@ -58,6 +58,8 @@ import getBirthdayData from './queries/getBirthdayData'
 
 import getInsights from './queries/getInsights'
 
+import getLocationSuggestions from './queries/getLocationSuggestions'
+
 export default {
   JSON: JSONResolver,
   DateTime: DateTimeResolver,
@@ -106,7 +108,8 @@ export default {
     getMapData,
     getAgeData,
     getBirthdayData,
-    getInsights
+    getInsights,
+    getLocationSuggestions
   },
 
   Mutation: {
