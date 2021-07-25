@@ -1,6 +1,10 @@
 import { PrismaClient } from '@prisma/client'
 
 import { ApolloServer } from 'apollo-server'
+import {
+  ApolloServerPluginLandingPageGraphQLPlayground,
+  ApolloServerPluginLandingPageDisabled
+} from 'apollo-server-core'
 
 import typeDefs from './schema'
 import resolvers from './resolvers'
@@ -21,6 +25,11 @@ export default new ApolloServer({
   typeDefs,
   resolvers,
   tracing: isDev,
+  plugins: [
+    process.env.NODE_ENV === 'production'
+      ? ApolloServerPluginLandingPageDisabled()
+      : ApolloServerPluginLandingPageGraphQLPlayground()
+  ],
   context: async ({ req }) => {
     // authenticate the user (if auth header is present) and add to context
     const user = await authenticateUserToken(req, prisma)
