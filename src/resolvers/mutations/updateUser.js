@@ -16,8 +16,6 @@ export default async (parent, args, context, info) => {
   // parse location data
   const parsedLocations = await getParsedLocations(args.input)
 
-  console.log(parsedLocations)
-
   const user = await context.prisma.user.update({
     where: { id: args.userID },
     data: { ...args.input, ...parsedLocations },

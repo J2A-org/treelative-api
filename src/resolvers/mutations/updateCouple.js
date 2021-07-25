@@ -4,6 +4,8 @@ import { isOwner } from '../../utils/authorization'
 
 import { PrismaSelect } from '@paljs/plugins'
 
+import getParsedLocations from '../../utils/getParsedLocations'
+
 export default async (parent, args, context, info) => {
   const updatingCouple = await context.prisma.couple.findUnique({
     where: { id: args.coupleID },
@@ -16,9 +18,12 @@ export default async (parent, args, context, info) => {
 
   const { userOne, userTwo, ...select } = new PrismaSelect(info).value.select
 
+  // parse location data
+  const parsedLocations = await getParsedLocations(args.input)
+
   const couple = await context.prisma.couple.update({
     where: { id: args.coupleID },
-    data: args.input,
+    data: { ...args.input, ...parsedLocations },
     select: { ...select, id: true, userOneID: Boolean(userOne), userTwoID: Boolean(userTwo) }
   })
 

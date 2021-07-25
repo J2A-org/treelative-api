@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 
-const locationKeys = ['birthLocation', 'currentLocation', 'deathLocation']
+const locationKeys = ['birthLocation', 'currentLocation', 'marriageLocation', 'deathLocation']
 
 export default async (input) => {
   const parsedLocations = {}
