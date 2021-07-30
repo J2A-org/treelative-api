@@ -13,11 +13,10 @@ export default async (parent, args, context, info) => {
 
   const hashedPassword = await hash(password, 10)
 
-  const user = await context.models.User.findOneAndUpdate(
+  const response = await context.models.User.updateOne(
     { _id: userID },
-    { password: hashedPassword },
-    { projection: 'id', lean: true }
+    { password: hashedPassword }
   )
 
-  return user
+  return response.ok === 1
 }

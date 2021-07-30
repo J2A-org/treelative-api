@@ -1,14 +1,9 @@
 scalar JSON
 scalar DateTime
 
-enum Role {
-  USER
-  ADMIN
-}
-
 type User {
   id: String
-  role: Role!
+  isAdmin: Boolean
   username: String!
   fullName: String!
   shortName: String!

@@ -7,6 +7,19 @@ import resetUserPassword from './mutations/resetUserPassword'
 import whoAmI from './queries/whoAmI'
 
 import createUser from './mutations/createUser'
+import deleteUser from './mutations/deleteUser'
+
+import updateUserGeneral from './mutations/updateUserGeneral'
+import updateUserSocial from './mutations/updateUserSocial'
+import updateUserAvatar from './mutations/updateUserAvatar'
+
+import addUserParent from './mutations/addUserParent'
+import addUserChild from './mutations/addUserChild'
+import addUserPartner from './mutations/addUserPartner'
+
+import removeUserParent from './mutations/removeUserParent'
+import removeUserChild from './mutations/removeUserChild'
+import removeUserPartner from './mutations/removeUserPartner'
 
 export default {
   JSON: JSONResolver,
@@ -25,6 +38,16 @@ export default {
     login,
     loginWithProvider,
     resetUserPassword,
-    createUser
+    createUser,
+    deleteUser,
+    updateUserGeneral,
+    updateUserSocial,
+    updateUserAvatar,
+    addUserParent,
+    addUserChild,
+    addUserPartner,
+    removeUserParent,
+    removeUserChild,
+    removeUserPartner
   }
 }

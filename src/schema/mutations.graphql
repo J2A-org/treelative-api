@@ -1,13 +1,13 @@
 type Mutation {
   login (input: LoginInput!): String!
   loginWithProvider (email: String! token: String!): String!
-  resetUserPassword (userID: String! password: String!): User!
+  resetUserPassword (userID: String! password: String!): Boolean!
 
   createUser (input: CreateUserInput!): User!
 	deleteUser (userID: String!): User!
 
 	updateUserGeneral (userID: String! input: UpdateUserGeneralInput!): User!
-  updateUserSocial (userID: String! input: UpdateUserSocialInput!): String!
+  updateUserSocial (userID: String! input: UpdateUserSocialInput!): User!
   updateUserAvatar (userID: String!): String!
 
   addUserParent (userID: String! parentID: String!): User!
