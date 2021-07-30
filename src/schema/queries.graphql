@@ -1,85 +1,28 @@
 type Query {
   healthCheck: String!
 
+  # auth
   whoAmI: User!
 
-  getUser (
-    filter: UserUniqueFilter
-  ): User
+  # profile card
+  getUser (id: String!): User
 
-  queryUser (
-    skip: Int
-    take: Int
-    cursor: UserFilter
-    orderBy: [UserOrder!]
-    where: UserFilter
-  ): [User!]
+  # search
+  searchUsers (query: String!): [User!]
 
-  getCouple (
-    filter: CoupleUniqueFilter
-  ): Couple
-
-  countUser (
-    skip: Int
-    take: Int
-    cursor: UserFilter
-    orderBy: [UserOrder!]
-    where: UserFilter
-  ): Int
-
-  queryCouple (
-    skip: Int
-    take: Int
-    cursor: CoupleFilter
-    orderBy: [CoupleOrder!]
-    where: CoupleFilter
-  ): [Couple!]
-
-  countCouple (
-    skip: Int
-    take: Int
-    cursor: CoupleFilter
-    orderBy: [CoupleOrder!]
-    where: CoupleFilter
-  ): Int
-
-  getUserAvailablePartners (
-    userID: String
-    skip: Int
-    take: Int
-    cursor: UserFilter
-    orderBy: [UserOrder!]
-    where: UserFilter
-  ): [User!]
-
-  getUserAvailableParents (
-    userID: String
-    skip: Int
-    take: Int
-    cursor: UserFilter
-    orderBy: [UserOrder!]
-    where: UserFilter
-  ): [User!]
-
-  getUserAvailableChildren (
-    userID: String
-    skip: Int
-    take: Int
-    cursor: UserFilter
-    orderBy: [UserOrder!]
-    where: UserFilter
-  ): [User!]
-
-  getUserFamily (
-    userID: String!
-  ): [User!]
-
+  # layouts
   getNetworkData: JSON!
   getMapData: JSON!
   getAgeData: JSON!
   getBirthdayData: JSON!
 
-  getInsights: JSON!
+  # insights
+  countUsers: Int!
+  countCouples: Int!
 
-  getLocationSuggestions (search: String): JSON!
+  # dropdown suggestions
+  suggestParents (search: String): [User!]
+  suggestChildren (search: String): [User!]
+  suggestPartners (search: String): [User!]
+  suggestLocations (search: String): JSON!
 }

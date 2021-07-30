@@ -14,10 +14,7 @@ export default async (parent, args, context, info) => {
     throw new ApolloError('User is not registered.', 'UNREGISTERED')
   }
 
-  const user = await context.prisma.user.findUnique({
-    where: { email },
-    select: { id: true, role: true }
-  })
+  const user = await context.models.User.findOne({ email }, 'isAdmin').lean()
 
   if (!user) {
     throw new ApolloError(`We could not find an account associated with the email ${email}`, 'UNREGISTERED')

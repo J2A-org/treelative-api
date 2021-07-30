@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -e js,graphql -r esm -r dotenv/config index.js",
-    "prod": "node -r esm -r dotenv/config index.js",
-    "prisma:db": "prisma db push",
-    "prisma:generate": "prisma generate"
+    "prod": "node -r esm -r dotenv/config index.js"
   },
   "repository": {
     "type": "git",
@@ -17,14 +15,11 @@
   "license": "ISC",
   "devDependencies": {
     "nodemon": "2.0.12",
-    "prisma": "2.27.0",
     "standard": "16.0.3"
   },
   "dependencies": {
     "@googlemaps/google-maps-services-js": "3.1.16",
-    "@paljs/plugins": "3.6.1",
-    "@prisma/client": "2.27.0",
-    "apollo-server": "3.0.0",
+    "apollo-server": "3.1.1",
     "bcryptjs": "2.4.3",
     "dotenv": "10.0.0",
     "esm": "3.2.25",
@@ -33,6 +28,7 @@
     "graphql-scalars": "1.10.0",
     "jsonwebtoken": "8.5.1",
     "minio": "7.0.18",
+    "mongoose": "5.13.4",
     "node-fetch": "2.6.1"
   }
 }

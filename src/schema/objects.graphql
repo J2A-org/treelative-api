@@ -8,49 +8,31 @@ enum Role {
 
 type User {
   id: String
-  role: Role
+  role: Role!
   username: String!
+  fullName: String!
+  shortName: String!
   email: String
   phoneNumber: String
-  fullName: String
-  shortName: String
   avatar: String
   birthLocation: JSON
   currentLocation: JSON
-  deathLocation: JSON
+  marriageLocation: JSON
   dateOfBirth: DateTime
+  dateOfMarriage: DateTime
   dateOfDeath: DateTime
-  settings: JSON
-  createdAt: DateTime
-  updatedAt: DateTime
+  social: Social
+  partner: User
   parents: [User!]
   children: [User!]
-  couple: Couple
-  siblings: [User!]
-  family: [User!]
-  socialLinks: [SocialLink!]
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
-type Couple {
-  id: String!
-  userOne: User!
-  userTwo: User!
-  partner: User # either userOne or userTwo depending on who is requesting
-  dateOfMarriage: DateTime
-  marriageLocation: JSON
-}
-
-type SocialLink {
-  id: String!
-  user: User!
-  type: Social!
-  url: String!
-}
-
-enum Social {
-  FACEBOOK
-  INSTAGRAM
-  TWITTER
-  LINKEDIN
-  WEBSITE
+type Social {
+  facebook: String
+  twitter: String
+  instagram: String
+  linkedIn: String
+  website: String
 }

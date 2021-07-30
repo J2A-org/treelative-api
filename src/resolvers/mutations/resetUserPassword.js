@@ -4,8 +4,6 @@ import { isOwner } from '../../utils/authorization'
 
 import { hash } from 'bcryptjs'
 
-import { PrismaSelect } from '@paljs/plugins'
-
 export default async (parent, args, context, info) => {
   const { userID, password } = args
 
@@ -15,13 +13,11 @@ export default async (parent, args, context, info) => {
 
   const hashedPassword = await hash(password, 10)
 
-  const { select } = new PrismaSelect(info).value
-
-  const user = await context.prisma.user.update({
-    where: { id: userID },
-    data: { password: hashedPassword },
-    select: { ...select, id: true }
-  })
+  const user = await context.models.User.findOneAndUpdate(
+    { _id: userID },
+    { password: hashedPassword },
+    { projection: 'id', lean: true }
+  )
 
   return user
 }

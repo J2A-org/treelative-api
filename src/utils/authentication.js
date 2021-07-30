@@ -11,20 +11,17 @@ export const generateToken = user => jwt.sign(
   user, JWT_SECRET, { expiresIn: JWT_EXPIRY }
 )
 
-export const authenticateUserToken = async (req, prisma) => {
+export const authenticateUserToken = async (req, models) => {
   try {
     const token = req.headers.auth_session_id
 
     if (!token) return null
 
-    const { id } = jwt.verify(token, JWT_SECRET)
+    const { _id } = jwt.verify(token, JWT_SECRET)
 
-    if (!id) return null
+    if (!_id) return null
 
-    const user = await prisma.user.findUnique({
-      where: { id },
-      select: { id: true, username: true, role: true, fullName: true }
-    })
+    const user = await models.User.findOne({ _id }, 'username isAdmin fullName').lean()
 
     return user
   } catch (error) {

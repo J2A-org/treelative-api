@@ -11,8 +11,5 @@ const loadGraphQL = (filePath) => {
 export default [
   loadGraphQL('objects.graphql'),
   loadGraphQL('queries.graphql'),
-  loadGraphQL('mutations.graphql'),
-  loadGraphQL('filters.graphql'),
-  loadGraphQL('order.graphql'),
-  loadGraphQL('prisma.graphql')
+  loadGraphQL('mutations.graphql')
 ]

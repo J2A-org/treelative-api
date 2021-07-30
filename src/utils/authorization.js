@@ -8,7 +8,7 @@ export const isAuthenticated = (context) => {
 }
 
 export const isAdmin = (context) => {
-  return isAuthenticated(context) && context.user.role === 'ADMIN'
+  return isAuthenticated(context) && context.user.isAdmin
 }
 
 export const isOwner = (context, userID) => {

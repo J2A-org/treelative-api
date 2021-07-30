@@ -1,25 +1,22 @@
 type Mutation {
   login (input: LoginInput!): String!
   loginWithProvider (email: String! token: String!): String!
-
-  addUser (input: AddUserInput!): User!
-	updateUser (userID: String! input: UpdateUserInput!): User!
-  updateUserAvatar (userID: String!): String!
   resetUserPassword (userID: String! password: String!): User!
+
+  createUser (input: CreateUserInput!): User!
 	deleteUser (userID: String!): User!
 
+	updateUserGeneral (userID: String! input: UpdateUserGeneralInput!): User!
+  updateUserSocial (userID: String! input: UpdateUserSocialInput!): String!
+  updateUserAvatar (userID: String!): String!
+
   addUserParent (userID: String! parentID: String!): User!
-  deleteUserParent (userID: String! parentID: String!): User!
   addUserChild (userID: String! childID: String!): User!
-  deleteUserChild (userID: String! childID: String!): User!
+  addUserPartner(userID: String! partnerID: String!): User!
 
-  addCouple (input: AddCoupleInput!): Couple!
-  updateCouple (coupleID: String! input: UpdateCoupleInput!): Couple!
-	deleteCouple (coupleID: String!): Couple!
-
-  addSocialLink (input: AddSocialLinkInput!): SocialLink!
-  updateSocialLink (socialLinkID: String! input: UpdateSocialLinkInput!): SocialLink!
-	deleteSocialLink (socialLinkID: String!): SocialLink!
+  removeUserParent (userID: String! parentID: String!): User!
+  removeUserChild (userID: String! childID: String!): User!
+  removeUserPartner(userID: String! partnerID: String!): User!
 }
 
 input LoginInput {
@@ -27,20 +24,12 @@ input LoginInput {
   password: String!
 }
 
-input AddUserInput {
-  email: String
-  phoneNumber: String
+input CreateUserInput {
   fullName: String!
   shortName: String!
-  birthLocation: JSON
-  currentLocation: JSON
-  deathLocation: JSON
-  dateOfBirth: DateTime
-  dateOfDeath: DateTime
 }
 
-input UpdateUserInput {
-  role: Role
+input UpdateUserGeneralInput {
   username: String
   email: String
   phoneNumber: String
@@ -48,31 +37,14 @@ input UpdateUserInput {
   shortName: String
   birthLocation: JSON
   currentLocation: JSON
-  deathLocation: JSON
   dateOfBirth: DateTime
   dateOfDeath: DateTime
-  settings: JSON
 }
 
-input AddCoupleInput {
-  userOneID: String!
-  userTwoID: String!
-  marriageLocation: JSON
-  dateOfMarriage: DateTime
-}
-
-input UpdateCoupleInput {
-  marriageLocation: JSON
-  dateOfMarriage: DateTime
-}
-
-input AddSocialLinkInput {
-  userID: String!
-  type: Social!
-  url: String!
-}
-
-input UpdateSocialLinkInput {
-  type: Social
-  url: String
+input UpdateUserSocialInput {
+  facebook: String
+  twitter: String
+  instagram: String
+  linkedIn: String
+  website: String
 }

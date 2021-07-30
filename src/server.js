@@ -1,4 +1,5 @@
-import { PrismaClient } from '@prisma/client'
+import mongoose from 'mongoose'
+import models from './models'
 
 import { ApolloServer } from 'apollo-server'
 import {
@@ -13,13 +14,13 @@ import { authenticateUserToken } from './utils/authentication'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
-// Initialize prisma client
-const prisma = new PrismaClient({
-  log: isDev ? [{ emit: 'event', level: 'query' }] : []
+// Initialize mongoose client
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
 })
-
-// Log all prisma queries during development
-isDev && prisma.$on('query', console.log)
 
 export default new ApolloServer({
   typeDefs,
@@ -32,11 +33,11 @@ export default new ApolloServer({
   ],
   context: async ({ req }) => {
     // authenticate the user (if auth header is present) and add to context
-    const user = await authenticateUserToken(req, prisma)
-    // also add prisma to the context
+    const user = await authenticateUserToken(req, models)
+    // also add mongoose models to the context
     return {
       user,
-      prisma
+      models
     }
   }
 })
