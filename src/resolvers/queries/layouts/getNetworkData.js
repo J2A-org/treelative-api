@@ -14,12 +14,16 @@ export default async (parent, args, context, info) => {
     if (user.partner) {
       const coupleID = [user._id, user.partner._id].sort().join('-')
       if (!couplesMap[coupleID]) {
+        const coupleOneChildIDs = user.children.map(({ _id }) => _id.toString())
+        const coupleTwoChildIDs = user.partner.children.map(({ _id }) => _id.toString())
+        const uniqueChildren = coupleOneChildIDs.concat(coupleTwoChildIDs.filter((item) => coupleOneChildIDs.indexOf(item) < 0))
+        console.log(uniqueChildren)
         couplesMap[coupleID] = {
           id: coupleID,
           group: 'couple',
           coupleOne: user,
           coupleTwo: user.partner,
-          children: [...user.children, ...user.partner.children]
+          children: uniqueChildren
         }
       }
     }
@@ -35,8 +39,8 @@ export default async (parent, args, context, info) => {
     [
       { from: couple.coupleOne._id, to: couple.id, color: '#F10037' },
       { from: couple.coupleTwo._id, to: couple.id, color: '#F10037' },
-      ...couple.children.map(child => (
-        { from: couple.id, to: child._id.toString(), color: '#07E901' }
+      ...couple.children.map(childID => (
+        { from: couple.id, to: childID, color: '#07E901' }
       ))
     ]
   )).flat()
