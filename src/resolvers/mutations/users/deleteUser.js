@@ -1,4 +1,4 @@
-import { isAdmin } from '../../utils/authorization'
+import { isAdmin } from '../../../utils/authorization'
 
 export default async (parent, args, context, info) => {
   isAdmin(context)

@@ -1,45 +1,45 @@
 import { JSONResolver, DateTimeResolver } from 'graphql-scalars'
 
-import login from './mutations/login'
-import loginWithProvider from './mutations/loginWithProvider'
-import resetUserPassword from './mutations/resetUserPassword'
+import login from './mutations/auth/login'
+import loginWithProvider from './mutations/auth/loginWithProvider'
+import resetUserPassword from './mutations/auth/resetUserPassword'
 
-import whoAmI from './queries/whoAmI'
+import whoAmI from './queries/auth/whoAmI'
 
-import createUser from './mutations/createUser'
-import deleteUser from './mutations/deleteUser'
+import createUser from './mutations/users/createUser'
+import deleteUser from './mutations/users/deleteUser'
 
-import updateUserGeneral from './mutations/updateUserGeneral'
-import updateUserSocial from './mutations/updateUserSocial'
-import updateUserAvatar from './mutations/updateUserAvatar'
+import updateUserGeneral from './mutations/users/updateUserGeneral'
+import updateUserSocial from './mutations/users/updateUserSocial'
+import updateUserAvatar from './mutations/users/updateUserAvatar'
 
-import addUserParent from './mutations/addUserParent'
-import addUserChild from './mutations/addUserChild'
-import addUserPartner from './mutations/addUserPartner'
+import addUserParent from './mutations/relations/addUserParent'
+import addUserChild from './mutations/relations/addUserChild'
+import addUserPartner from './mutations/relations/addUserPartner'
 
-import removeUserParent from './mutations/removeUserParent'
-import removeUserChild from './mutations/removeUserChild'
-import removeUserPartner from './mutations/removeUserPartner'
+import removeUserParent from './mutations/relations/removeUserParent'
+import removeUserChild from './mutations/relations/removeUserChild'
+import removeUserPartner from './mutations/relations/removeUserPartner'
 
-import getUser from './queries/getUser'
-import getUserPartner from './queries/getUserPartner'
-import getUserParents from './queries/getUserParents'
-import getUserChildren from './queries/getUserChildren'
+import getUser from './queries/users/getUser'
+import getUserPartner from './queries/users/getUserPartner'
+import getUserParents from './queries/users/getUserParents'
+import getUserChildren from './queries/users/getUserChildren'
 
-import searchUsers from './queries/searchUsers'
+import searchUsers from './queries/users/searchUsers'
 
-import countUsers from './queries/countUsers'
-import countCouples from './queries/countCouples'
+import countUsers from './queries/insights/countUsers'
+import countCouples from './queries/insights/countCouples'
 
-import suggestParents from './queries/suggestParents'
-import suggestChildren from './queries/suggestChildren'
-import suggestPartners from './queries/suggestPartners'
-import suggestLocations from './queries/suggestLocations'
+import suggestParents from './queries/suggestions/suggestParents'
+import suggestChildren from './queries/suggestions/suggestChildren'
+import suggestPartners from './queries/suggestions/suggestPartners'
+import suggestLocations from './queries/suggestions/suggestLocations'
 
-import getNetworkData from './queries/getNetworkData'
-import getMapData from './queries/getMapData'
-import getAgeData from './queries/getAgeData'
-import getBirthdayData from './queries/getBirthdayData'
+import getNetworkData from './queries/layouts/getNetworkData'
+import getMapData from './queries/layouts/getMapData'
+import getAgeData from './queries/layouts/getAgeData'
+import getBirthdayData from './queries/layouts/getBirthdayData'
 
 export default {
   JSON: JSONResolver,

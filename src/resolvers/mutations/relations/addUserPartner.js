@@ -1,6 +1,6 @@
 import { ApolloError } from 'apollo-server'
 
-import { isOwner } from '../../utils/authorization'
+import { isOwner } from '../../../utils/authorization'
 
 import { addUserChild } from './addUserChild'
 

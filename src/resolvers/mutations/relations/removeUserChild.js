@@ -1,6 +1,6 @@
 import { ApolloError } from 'apollo-server'
 
-import { isOwner } from '../../utils/authorization'
+import { isOwner } from '../../../utils/authorization'
 
 export const removeUserChild = async (models, userID, childID) => {
   // remove the childID from this user

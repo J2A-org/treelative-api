@@ -1,6 +1,6 @@
 import { ApolloError } from 'apollo-server'
 
-import fuzzySearch from '../../utils/fuzzySearch'
+import fuzzySearch from '../../../utils/fuzzySearch'
 
 export default async (parent, args, context, info) => {
   // only authenticated users can list a user's available partners
@@ -10,13 +10,13 @@ export default async (parent, args, context, info) => {
 
   const { userID, query } = args
 
-  const usersNotChildrenOrPartnerWithCurrentUser = await context.models.User.find(
+  const usersNotParentsOrPartnerWithCurrentUser = await context.models.User.find(
     {
       $or: fuzzySearch(query),
-      parents: { $nin: [userID] },
+      parents: { $eq: [] },
       partner: { $ne: userID }
     }
   ).lean()
 
-  return usersNotChildrenOrPartnerWithCurrentUser.filter(({ _id }) => _id.toString() !== userID)
+  return usersNotParentsOrPartnerWithCurrentUser.filter(({ _id }) => _id.toString() !== userID)
 }

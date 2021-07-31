@@ -2,7 +2,7 @@ import { ApolloError } from 'apollo-server'
 
 import { compare } from 'bcryptjs'
 
-import { generateToken } from '../../utils/authentication'
+import { generateToken } from '../../../utils/authentication'
 
 export default async (parent, args, context, info) => {
   const { username, password } = args.input

@@ -1,8 +1,8 @@
 import { ApolloError } from 'apollo-server'
 
-import { isOwner } from '../../utils/authorization'
+import { isOwner } from '../../../utils/authorization'
 
-import minioClient from '../../utils/minioClient'
+import minioClient from '../../../utils/minioClient'
 
 export default async (parent, args, context, info) => {
   if (!isOwner(context, args.userID)) {

@@ -1,6 +1,6 @@
 import { ApolloError } from 'apollo-server'
 
-import fuzzySearch from '../../utils/fuzzySearch'
+import fuzzySearch from '../../../utils/fuzzySearch'
 
 export default async (parent, args, context, info) => {
   // only authenticated users can list a user's available partners

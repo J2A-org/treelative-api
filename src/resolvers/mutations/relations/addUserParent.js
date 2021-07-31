@@ -1,6 +1,6 @@
 import { ApolloError } from 'apollo-server'
 
-import { isOwner } from '../../utils/authorization'
+import { isOwner } from '../../../utils/authorization'
 
 export const addUserParent = async (models, userID, parentID) => {
   // add the parentID as a parent to this user

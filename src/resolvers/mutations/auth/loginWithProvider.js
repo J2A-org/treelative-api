@@ -1,8 +1,8 @@
 import { ApolloError } from 'apollo-server'
 
-import admin from '../../utils/firebase'
+import admin from '../../../utils/firebase'
 
-import { generateToken } from '../../utils/authentication'
+import { generateToken } from '../../../utils/authentication'
 
 export default async (parent, args, context, info) => {
   const { email, token } = args
