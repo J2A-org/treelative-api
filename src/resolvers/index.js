@@ -21,17 +21,52 @@ import removeUserParent from './mutations/removeUserParent'
 import removeUserChild from './mutations/removeUserChild'
 import removeUserPartner from './mutations/removeUserPartner'
 
+import getUser from './queries/getUser'
+import getUserPartner from './queries/getUserPartner'
+import getUserParents from './queries/getUserParents'
+import getUserChildren from './queries/getUserChildren'
+
+import searchUsers from './queries/searchUsers'
+
+import countUsers from './queries/countUsers'
+import countCouples from './queries/countCouples'
+
+import suggestParents from './queries/suggestParents'
+import suggestChildren from './queries/suggestChildren'
+import suggestPartners from './queries/suggestPartners'
+import suggestLocations from './queries/suggestLocations'
+
+import getNetworkData from './queries/getNetworkData'
+import getMapData from './queries/getMapData'
+import getAgeData from './queries/getAgeData'
+import getBirthdayData from './queries/getBirthdayData'
+
 export default {
   JSON: JSONResolver,
   DateTime: DateTimeResolver,
 
   User: {
-    id: parent => parent._id.toString()
+    id: parent => parent._id.toString(),
+    partner: getUserPartner,
+    parents: getUserParents,
+    children: getUserChildren
   },
 
   Query: {
     healthCheck: () => 'Welcome to Treelative API',
-    whoAmI
+    whoAmI,
+    getUser,
+    searchUsers,
+    countUsers,
+    countCouples,
+    suggestParents,
+    suggestChildren,
+    suggestPartners,
+    suggestLocations,
+    getNetworkData,
+    getMapData,
+    getAgeData,
+    getBirthdayData
   },
 
   Mutation: {

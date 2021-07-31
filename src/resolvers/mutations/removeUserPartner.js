@@ -14,14 +14,14 @@ export default async (parent, args, context, info) => {
   // remove the partnerID as a partner from userID
   const user = await context.models.User.findOneAndUpdate(
     { _id: userID },
-    { partner: null },
+    { $unset: { partner: '' } },
     { new: true }
   )
 
   // remove the userID as a partner from partnerID
   const partner = await context.models.User.findOneAndUpdate(
     { _id: partnerID },
-    { partner: null },
+    { $unset: { partner: '' } },
     { new: true }
   )
 

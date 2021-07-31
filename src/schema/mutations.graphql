@@ -4,7 +4,7 @@ type Mutation {
   resetUserPassword (userID: String! password: String!): Boolean!
 
   createUser (input: CreateUserInput!): User!
-	deleteUser (userID: String!): User!
+	deleteUser (userID: String!): Boolean!
 
 	updateUserGeneral (userID: String! input: UpdateUserGeneralInput!): User!
   updateUserSocial (userID: String! input: UpdateUserSocialInput!): User!

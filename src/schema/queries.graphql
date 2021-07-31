@@ -21,8 +21,8 @@ type Query {
   countCouples: Int!
 
   # dropdown suggestions
-  suggestParents (search: String): [User!]
-  suggestChildren (search: String): [User!]
-  suggestPartners (search: String): [User!]
-  suggestLocations (search: String): JSON!
+  suggestParents (userID: String! query: String): [User!]
+  suggestChildren (userID: String! query: String): [User!]
+  suggestPartners (userID: String! query: String): [User!]
+  suggestLocations (query: String): JSON!
 }
