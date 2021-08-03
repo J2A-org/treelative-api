@@ -39,10 +39,7 @@ export default async (parent, args, context, info) => {
   }
 
   const couples = Object.values(couplesMap)
-  const nodeCouples = couples.map(couple => ({
-    id: couple.id,
-    group: 'couple'
-  }))
+  const nodeCouples = couples.map(({ id, group }) => ({ id, group }))
 
   const nodeEdges = couples.map(couple => (
     [
