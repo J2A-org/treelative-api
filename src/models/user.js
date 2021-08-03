@@ -3,6 +3,7 @@ import mongoose, { Schema } from 'mongoose'
 const UserSchema = new Schema(
   {
     isAdmin: Boolean,
+    isPublic: Boolean,
     username: {
       type: String,
       trim: true,

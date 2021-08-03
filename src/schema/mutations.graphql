@@ -41,6 +41,7 @@ input UpdateUserGeneralInput {
   dateOfBirth: DateTime
   dateOfMarriage: DateTime
   dateOfDeath: DateTime
+  isPublic: Boolean
 }
 
 input UpdateUserSocialInput {
