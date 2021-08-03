@@ -30,7 +30,7 @@ export default async (parent, args, context, info) => {
 
   // if the user has a partner
   if (user.partner) {
-    await addUserChild(context.models, user.partner._id, userID)
+    await addUserChild(context.models, user.partner._id, childID)
   }
 
   return user
