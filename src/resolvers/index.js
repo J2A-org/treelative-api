@@ -22,6 +22,7 @@ import removeUserChild from './mutations/relations/removeUserChild'
 import removeUserPartner from './mutations/relations/removeUserPartner'
 
 import getUser from './queries/users/getUser'
+import getUserAvatar from './queries/users/getUserAvatar'
 import getUserPartner from './queries/users/getUserPartner'
 import getUserParents from './queries/users/getUserParents'
 import getUserChildren from './queries/users/getUserChildren'
@@ -47,6 +48,7 @@ export default {
 
   User: {
     id: parent => parent._id.toString(),
+    avatar: getUserAvatar,
     partner: getUserPartner,
     parents: getUserParents,
     children: getUserChildren
