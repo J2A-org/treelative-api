@@ -39,7 +39,7 @@ const UserSchema = new Schema(
       facebook: String,
       twitter: String,
       instagram: String,
-      linkedIn: String,
+      linkedin: String,
       website: String
     },
     partner: {
