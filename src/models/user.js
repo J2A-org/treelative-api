@@ -29,6 +29,7 @@ const UserSchema = new Schema(
       unique: true,
       sparse: true
     },
+    phoneNumber: String,
     birthLocation: Map,
     currentLocation: Map,
     marriageLocation: Map,
