@@ -31,7 +31,7 @@ export default async (parent, args, context, info) => {
       const coupleID = [user._id, 'singleParent'].sort().join('-')
       couplesMap[coupleID] = {
         id: coupleID,
-        group: 'couple',
+        group: 'singleParent',
         coupleOne: user,
         children: user.children.map(({ _id }) => _id.toString())
       }
