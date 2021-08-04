@@ -19,6 +19,8 @@ type Query {
   # insights
   countUsers: Int!
   countCouples: Int!
+  insightsByAge: JSON!
+  insightsByLocation: JSON!
 
   # dropdown suggestions
   suggestParents (userID: String! query: String): [User!]

@@ -1,12 +1,10 @@
 export default async (parent, args, context, info) => {
-  const users = await context.models.User.find({}).lean()
+  const users = await context.models.User.find({}, 'dateOfBirth fullName').lean()
 
   const result = {}
 
   for (const user of users) {
-    const birthYear = user.dateOfBirth ? new Date(user.dateOfBirth).toISOString().slice(0, 4) : null
-
-    if (!birthYear) continue
+    const birthYear = user.dateOfBirth ? new Date(user.dateOfBirth).toISOString().slice(0, 4) : '0000'
 
     user.id = user._id
     user.avatar = `https://${process.env.MINIO_ENDPOINT}/avatar/${user._id}.jpg`

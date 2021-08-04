@@ -31,6 +31,8 @@ import searchUsers from './queries/users/searchUsers'
 
 import countUsers from './queries/insights/countUsers'
 import countCouples from './queries/insights/countCouples'
+import insightsByAge from './queries/insights/insightsByAge'
+import insightsByLocation from './queries/insights/insightsByLocation'
 
 import suggestParents from './queries/suggestions/suggestParents'
 import suggestChildren from './queries/suggestions/suggestChildren'
@@ -68,7 +70,9 @@ export default {
     getNetworkData,
     getMapData,
     getAgeData,
-    getBirthdayData
+    getBirthdayData,
+    insightsByAge,
+    insightsByLocation
   },
 
   Mutation: {

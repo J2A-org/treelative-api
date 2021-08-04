@@ -10,14 +10,12 @@ const calculateAge = (birthday, today) => {
 }
 
 export default async (parent, args, context, info) => {
-  const users = await context.models.User.find({}).lean()
+  const users = await context.models.User.find({}, 'dateOfBirth fullName').lean()
 
   const result = {}
 
   for (const user of users) {
-    const birthMonthDay = user.dateOfBirth ? user.dateOfBirth.toISOString().slice(5, 10) : null
-
-    if (!birthMonthDay) continue
+    const birthMonthDay = user.dateOfBirth ? user.dateOfBirth.toISOString().slice(5, 10) : '0000'
 
     user.id = user._id
     user.avatar = `https://${process.env.MINIO_ENDPOINT}/avatar/${user.id}.jpg`
