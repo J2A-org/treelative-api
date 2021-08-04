@@ -5,11 +5,8 @@ export default async (parent, args, context, info) => {
 
   for (const user of users) {
     const country = user.currentLocation ? user.currentLocation.suggested.terms.pop().value : 'Unknown'
-    console.log(country)
     groupByCountry[country] = (groupByCountry[country] || 0) + 1
   }
-
-  console.log(groupByCountry)
 
   const orderedResult = Object.keys(groupByCountry).sort((a, b) => {
     if (groupByCountry[a] > groupByCountry[b]) {
