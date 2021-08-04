@@ -16,7 +16,7 @@ export default async (parent, args, context, info) => {
       parents: { $nin: [userID] },
       partner: { $ne: userID }
     }
-  ).lean()
+  ).limit(5).lean()
 
   return usersNotChildrenOrPartnerWithCurrentUser.filter(({ _id }) => _id.toString() !== userID)
 }
