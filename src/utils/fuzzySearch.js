@@ -3,6 +3,6 @@ export default (query) => [
   { shortName: { $regex: query, $options: 'i' } },
   { email: { $regex: query, $options: 'i' } },
   { phoneNumber: { $regex: query, $options: 'i' } },
-  { birthLocation: { suggested: { description: { $regex: query, $options: 'i' } } } },
-  { currentLocation: { suggested: { description: { $regex: query, $options: 'i' } } } }
+  { 'birthLocation.suggested.description': { $regex: query, $options: 'i' } },
+  { 'currentLocation.suggested.description': { $regex: query, $options: 'i' } }
 ]
