@@ -1,11 +1,11 @@
 import { ApolloError } from 'apollo-server'
 
-import { isOwner } from '../../../utils/authorization'
+import { isAuthenticated } from '../../../utils/authorization'
 
 export default async (parent, args, context, info) => {
   const user = await context.models.User.findOne({ _id: args.id }).lean()
 
-  if (!user.isPublic && !isOwner(context, args.userID)) {
+  if (!user.isPublic && !isAuthenticated(context)) {
     throw new ApolloError('You are not authorized to perform this action', 'UNAUTHORIZED')
   }
 

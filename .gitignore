@@ -2,3 +2,5 @@ node_modules
 .env
 firebaseAuth.json
 .DS_Store
+allData.json
+migrate.js
