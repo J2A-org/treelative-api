@@ -10,26 +10,27 @@ const calculateAge = (birthday, today) => {
 }
 
 export default async (parent, args, context, info) => {
-  const users = await context.models.User.find({}, 'dateOfBirth fullName').lean()
+  const users = await context.models.User.find({ dateOfBirth: { $ne: null } }, 'dateOfBirth fullName').lean()
+  const unknownCount = await context.models.User.countDocuments({ dateOfBirth: { $eq: null } })
 
-  const result = {}
+  const data = {}
 
   for (const user of users) {
-    const birthMonthDay = user.dateOfBirth ? user.dateOfBirth.toISOString().slice(5, 10) : '0000'
+    const birthMonthDay = user.dateOfBirth.toISOString().slice(5, 10)
 
     user.id = user._id
     user.avatar = `https://${process.env.MINIO_ENDPOINT}/avatar/${user.id}.jpg`
     user.brokenAvatar = `https://ui-avatars.com/api/?name=${user.fullName}&background=random&rounded=true&font-size=0.5&bold=true`
     user.age = calculateAge(user.dateOfBirth, user.dateOfDeath ? new Date(user.dateOfDeath) : new Date())
 
-    if (result[birthMonthDay]) {
-      result[birthMonthDay] = [...result[birthMonthDay], user]
+    if (data[birthMonthDay]) {
+      data[birthMonthDay] = [...data[birthMonthDay], user]
     } else {
-      result[birthMonthDay] = [user]
+      data[birthMonthDay] = [user]
     }
   }
 
-  const orderedResult = Object.keys(result).sort((a, b) => {
+  const orderedResult = Object.keys(data).sort((a, b) => {
     a = new Date(a)
     b = new Date(b)
     if (a > b) {
@@ -41,11 +42,14 @@ export default async (parent, args, context, info) => {
     }
   }).reduce(
     (obj, key) => {
-      obj[key] = result[key]
+      obj[key] = data[key]
       return obj
     },
     {}
   )
 
-  return orderedResult
+  return {
+    data: orderedResult,
+    unknownCount
+  }
 }

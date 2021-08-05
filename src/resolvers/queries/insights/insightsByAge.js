@@ -10,12 +10,13 @@ const calculateAge = (birthday, today) => {
 }
 
 export default async (parent, args, context, info) => {
-  const users = await context.models.User.find({}, 'dateOfBirth').lean()
+  const users = await context.models.User.find({ dateOfBirth: { $ne: null } }, 'dateOfBirth').lean()
+  const unknownCount = await context.models.User.countDocuments({ dateOfBirth: { $eq: null } })
 
   const groupByAge = {}
 
   for (const user of users) {
-    const age = user.dateOfBirth ? calculateAge(user.dateOfBirth, user.dateOfDeath ? new Date(user.dateOfDeath) : new Date()) : 'Unknown'
+    const age = calculateAge(user.dateOfBirth, user.dateOfDeath ? new Date(user.dateOfDeath) : new Date())
     if (age >= 1 && age < 10) {
       groupByAge['0-10'] = (groupByAge['0-10'] || 0) + 1
     } else if (age >= 10 && age < 20) {
@@ -34,8 +35,6 @@ export default async (parent, args, context, info) => {
       groupByAge['70-80'] = (groupByAge['70-80'] || 0) + 1
     } else if (age >= 80) {
       groupByAge['80+'] = (groupByAge['80+'] || 0) + 1
-    } else {
-      groupByAge.Unknown = (groupByAge.Unknown || 0) + 1
     }
   }
 
@@ -55,5 +54,8 @@ export default async (parent, args, context, info) => {
     {}
   )
 
-  return Object.entries(orderedResult).map(([key, value]) => ({ ages: key, count: value }))
+  return {
+    data: Object.entries(orderedResult).map(([key, value]) => ({ ages: key, count: value })),
+    unknownCount
+  }
 }

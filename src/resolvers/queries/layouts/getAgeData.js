@@ -1,21 +1,25 @@
 export default async (parent, args, context, info) => {
-  const users = await context.models.User.find({}, 'dateOfBirth fullName').lean()
+  const users = await context.models.User.find({ dateOfBirth: { $ne: null } }, 'dateOfBirth fullName').lean()
+  const unknownCount = await context.models.User.countDocuments({ dateOfBirth: { $eq: null } })
 
-  const result = {}
+  const data = {}
 
   for (const user of users) {
-    const birthYear = user.dateOfBirth ? new Date(user.dateOfBirth).toISOString().slice(0, 4) : '0000'
+    const birthYear = new Date(user.dateOfBirth).toISOString().slice(0, 4)
 
     user.id = user._id
     user.avatar = `https://${process.env.MINIO_ENDPOINT}/avatar/${user._id}.jpg`
     user.brokenAvatar = `https://ui-avatars.com/api/?name=${user.fullName}&background=random&rounded=true&font-size=0.5&bold=true`
 
-    if (result[birthYear]) {
-      result[birthYear] = [...result[birthYear], user]
+    if (data[birthYear]) {
+      data[birthYear] = [...data[birthYear], user]
     } else {
-      result[birthYear] = [user]
+      data[birthYear] = [user]
     }
   }
 
-  return result
+  return {
+    data,
+    unknownCount
+  }
 }
