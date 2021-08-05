@@ -4,6 +4,7 @@ scalar DateTime
 type User {
   id: String
   isAdmin: Boolean
+  isPublic: Boolean
   username: String!
   fullName: String!
   shortName: String!

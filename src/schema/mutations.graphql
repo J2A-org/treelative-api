@@ -37,7 +37,7 @@ input UpdateUserGeneralInput {
   shortName: String
   birthLocation: JSON
   currentLocation: JSON
-  marriageLocations: JSON
+  marriageLocation: JSON
   dateOfBirth: DateTime
   dateOfMarriage: DateTime
   dateOfDeath: DateTime
