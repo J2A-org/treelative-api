@@ -5,5 +5,7 @@ export default async (parent, args, context, info) => {
     throw new ApolloError('Session expired.', 'SESSION_EXPIRED')
   }
 
-  return context.user
+  const user = await context.models.User.findOne({ _id: context.user._id }).lean()
+
+  return user
 }
