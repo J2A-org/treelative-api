@@ -7,6 +7,7 @@ const adjustLocation = (count, { lat, lng }) => {
 
 export default async (parent, args, context, info) => {
   const users = await context.models.User.find({ currentLocation: { $ne: null } }).lean()
+  const unknownCount = await context.models.User.countDocuments({ currentLocation: { $eq: null } })
 
   const seenLocations = {}
 
@@ -24,5 +25,8 @@ export default async (parent, args, context, info) => {
     return result
   })
 
-  return usersMap
+  return {
+    data: usersMap,
+    unknownCount
+  }
 }
