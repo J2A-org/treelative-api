@@ -1,12 +1,13 @@
 export default async (parent, args, context, info) => {
-  const users = await context.models.User.find({}, 'currentLocation').lean()
+  const users = await context.models.User.find({ currentLocation: { $ne: null } }, 'currentLocation').lean()
+  const unknownCount = await context.models.User.countDocuments({ currentLocation: { $eq: null } })
 
   const groupByCountry = {}
 
   const countryCodeMap = {}
 
   for (const user of users) {
-    const country = user.currentLocation ? user.currentLocation.suggested.terms.pop().value : 'Unknown'
+    const country = user.currentLocation.suggested.terms.pop().value
 
     if (user.currentLocation) {
       const countryInfo = user.currentLocation.parsed.address_components.find(({ types }) => types.includes('country'))
@@ -28,11 +29,20 @@ export default async (parent, args, context, info) => {
     }
   }).reduce(
     (obj, key) => {
-      obj[key] = groupByCountry[key]
+      if (groupByCountry[key] > 2) {
+        obj[key] = groupByCountry[key]
+      } else {
+        obj.others = (obj.others || 0) + groupByCountry[key]
+      }
       return obj
     },
     {}
   )
 
-  return Object.entries(orderedResult).map(([key, value]) => ({ country: key, count: value, code: countryCodeMap[key] }))
+  const data = Object.entries(orderedResult).map(([key, value]) => ({ country: key, count: value, code: countryCodeMap[key] }))
+
+  return {
+    data,
+    unknownCount
+  }
 }
